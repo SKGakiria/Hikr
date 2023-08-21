@@ -41,11 +41,22 @@ class CustomUserManager(BaseUserManager):
 class User(AbstractUser):
     """
     Define a custom User model. Set `USERNAME_FIELD` to `email` and `REQUIRED_FIELDS` to `username` and `password`.
+
+    attributes:
+        email (str): The email of the user. Must be unique.
+        username (str): The username of the user. Must be unique.
+        password (str): The password of the user.
+        first_name (str): The first name of the user.
+        last_name (str): The last name of the user.
+        location (str): The location of the user.
+        avatar (ImageField): The avatar of the user.
     """
     email = models.EmailField(max_length=255, unique=True)
-    location = models.CharField(max_length=100, blank=True)
     username = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=100, editable=False)
+    first_name = models.CharField(max_length=40, blank=True)
+    last_name = models.CharField(max_length=40, blank=True)
+    location = models.CharField(max_length=100, blank=True)
     avatar = ResizedImageField(
         size=[370, 259],
         default="users/avatars/default.png",
