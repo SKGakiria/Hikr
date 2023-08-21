@@ -27,9 +27,11 @@ class Group(BaseModel):
     Inherits from BaseModel.
 
     attributes:
+        owner (User): Reference to User. The owner of the group.
         name (str): The name of the group. Must be unique.
         image (ImageField): The image of the group.
     """
+    owner = models.ForeignKey(get_user_model(), related_name="owned_groups", on_delete=models.CASCADE)
     name = models.CharField(max_length=225, unique=True)
     image = ResizedImageField(
         size=[400, 500],

@@ -11,6 +11,7 @@ class Event(BaseModel):
     Inherits from BaseModel.
 
     attributes:
+        organizer (User): Reference to User. The organizer of the event.
         name (str): The name of the event.
         date (date): The date of the event.
         time (time): The time of the event.
@@ -22,7 +23,7 @@ class Event(BaseModel):
         ("intermediate", "Intermediate"),
         ("advanced", "Advanced"),
     ]
-
+    organizer = models.ForeignKey(get_user_model(), related_name="organized_events", on_delete=models.CASCADE)
     name = models.CharField(max_length=225)
     date = models.DateField(default=datetime.now() + timedelta(weeks=1))
     time = models.TimeField(default=datetime.strptime("08:00:00", "%H:%M:%S").time())

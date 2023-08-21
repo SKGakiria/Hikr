@@ -54,9 +54,9 @@ class User(AbstractUser):
     email = models.EmailField(max_length=255, unique=True)
     username = models.CharField(max_length=40, unique=True)
     password = models.CharField(max_length=100, editable=False)
-    first_name = models.CharField(max_length=40, blank=True)
-    last_name = models.CharField(max_length=40, blank=True)
-    location = models.CharField(max_length=100, blank=True)
+    first_name = models.CharField(max_length=40, blank=True, default="")
+    last_name = models.CharField(max_length=40, blank=True, default="")
+    location = models.CharField(max_length=100, blank=True, default="")
     avatar = ResizedImageField(
         size=[370, 259],
         default="users/avatars/default.png",
