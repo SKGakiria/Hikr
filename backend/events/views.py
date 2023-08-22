@@ -61,7 +61,7 @@ class EventAttendanceListCreateView(generics.ListCreateAPIView):
         serializer.save(user=user, event=event)
 
 
-class EventAttendanceDeleteView(generics.RetrieveUpdateDestroyAPIView):
+class EventAttendanceDeleteView(generics.RetrieveDestroyAPIView):
     """
     Delete an event attendee/participant.
     Retrieve and update are not allowed.
@@ -70,7 +70,7 @@ class EventAttendanceDeleteView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EventAttendanceSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
-    def delete(self, *args, **kwargs):
+    def delete(self, request, *args, **kwargs):
         event_id = self.kwargs['pk']
         user_id = self.kwargs['participant_pk']
 
@@ -78,12 +78,12 @@ class EventAttendanceDeleteView(generics.RetrieveUpdateDestroyAPIView):
             event_attendance = EventAttendance.objects.get(event_id=event_id, user_id=user_id)
         except EventAttendance.DoesNotExist:
             raise NotFound("Event participant does not exist.")
+
+        if  request.user != event_attendance.user or request.user != event_attendance.event.owner:
+            raise serializers.ValidationError("You are not authorized to delete this event participant.")
         
         event_attendance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def get(self, request, *args, **kwargs):
-        raise MethodNotAllowed(request.method)
-    
-    def put(self, request, *args, **kwargs):
         raise MethodNotAllowed(request.method)
