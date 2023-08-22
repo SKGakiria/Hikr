@@ -1,5 +1,6 @@
 from rest_framework import generics, permissions
 from .models import User
+from .permissions import IsSelfOrReadOnly
 from .serializers import UserSerializer
 
 
@@ -18,4 +19,4 @@ class UserRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSelfOrReadOnly]
