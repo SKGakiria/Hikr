@@ -1,8 +1,17 @@
-from rest_framework.serializers import ModelSerializer
-from .models import Event
+from rest_framework.serializers import HyperlinkedModelSerializer
+from users.serializers import UserSerializer
+from .models import Event, EventAttendance
 
 
-class EventSerializer(ModelSerializer):
+class EventSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Event
         fields = "__all__"
+
+
+class EventAttendanceSerializer(HyperlinkedModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = EventAttendance
+        fields = ['id', 'joined_at', 'user']
