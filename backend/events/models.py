@@ -57,11 +57,12 @@ class EventAttendance(models.Model):
     """
     user = models.ForeignKey(get_user_model(), related_name="events",  on_delete=models.CASCADE)
     event = models.ForeignKey(Event, related_name="attendees", on_delete=models.CASCADE)
-    is_admin = models.BooleanField(default=False)
     joined_at = models.DateTimeField(auto_now_add=True)
+    is_admin = models.BooleanField(default=False)
 
     class Meta:
         db_table = "event_attendance"
+        unique_together = ["user", "event"]
         ordering = ["-joined_at"]
 
     def __str__(self):

@@ -64,11 +64,11 @@ class GroupMembership(models.Model):
     """
     user = models.ForeignKey(get_user_model(), related_name="member_groups", on_delete=models.CASCADE)
     group = models.ForeignKey(Group, related_name="members", on_delete=models.CASCADE)
-    is_admin = models.BooleanField(default=False)
     joined_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = "group_memberships"
+        unique_together = ["user", "group"]
         ordering = ["-joined_at"]
 
     def __str__(self):
