@@ -3,7 +3,7 @@ from .models import Event, EventAttendance
 
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'date', 'time', 'location', 'description', 'created_at', 'updated_at')
+    list_display = ('id', 'name', 'date', 'time', 'location', 'difficulty', 'description', 'created_at', 'updated_at')
     list_display_links = ('id', 'name')
     search_fields = ('name', 'group', 'location', 'description')
     list_per_page = 25

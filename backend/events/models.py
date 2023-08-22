@@ -23,7 +23,7 @@ class Event(BaseModel):
         ("intermediate", "Intermediate"),
         ("advanced", "Advanced"),
     ]
-    organizer = models.ForeignKey(get_user_model(), related_name="organized_events", on_delete=models.CASCADE)
+    owner = models.ForeignKey(get_user_model(), related_name="organized_events", on_delete=models.CASCADE)
     name = models.CharField(max_length=225)
     date = models.DateField(default=datetime.now() + timedelta(weeks=1))
     time = models.TimeField(default=datetime.strptime("08:00:00", "%H:%M:%S").time())
