@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import generics, status, serializers
+from rest_framework import generics, status, serializers, permissions
 from rest_framework.exceptions import MethodNotAllowed, NotFound
 from rest_framework.response import Response
 from .models import Group, GroupMembership
+from .permissions import IsOwnerOrReadOnly
 from .serializers import GroupSerializer, GroupMembershipSerializer
-
 
 
 class GroupListCreateView(generics.ListCreateAPIView):
@@ -13,6 +13,10 @@ class GroupListCreateView(generics.ListCreateAPIView):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class GroupRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
@@ -21,6 +25,7 @@ class GroupRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
 
 class GroupMembershipListCreateView(generics.ListCreateAPIView):
@@ -28,6 +33,7 @@ class GroupMembershipListCreateView(generics.ListCreateAPIView):
     List all group memberships, or create a new group membership.
     """
     serializer_class = GroupMembershipSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         group_id = self.kwargs['pk']
@@ -63,6 +69,7 @@ class GroupMembershipDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = GroupMembership.objects.all()
     serializer_class = GroupMembershipSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def delete(self, request, *args, **kwargs):
         group_id = self.kwargs['pk']

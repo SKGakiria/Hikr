@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import generics, status, serializers
+from rest_framework import generics, status, serializers, permissions
 from rest_framework.exceptions import MethodNotAllowed, NotFound
 from rest_framework.response import Response
+from groups.permissions import IsOwnerOrReadOnly
 from .models import Event, EventAttendance
 from .serializers import EventSerializer, EventAttendanceSerializer
 
@@ -12,7 +13,10 @@ class EventListCreateView(generics.ListCreateAPIView):
     """
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class EventRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -20,6 +24,7 @@ class EventRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
 
 class EventAttendanceListCreateView(generics.ListCreateAPIView):
@@ -27,6 +32,7 @@ class EventAttendanceListCreateView(generics.ListCreateAPIView):
     List all event attendees, or create a new event attendee/participant.
     """
     serializer_class = EventAttendanceSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         event_id = self.kwargs['pk']
@@ -62,6 +68,7 @@ class EventAttendanceDeleteView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = EventAttendance.objects.all()
     serializer_class = EventAttendanceSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def delete(self, *args, **kwargs):
         event_id = self.kwargs['pk']

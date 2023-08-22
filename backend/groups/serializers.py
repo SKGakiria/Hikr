@@ -6,7 +6,7 @@ from .models import Group, GroupMembership
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
-        fields = ['id', 'url', 'name', 'description', 'location', 'owner', 'created_at', 'updated_at']
+        fields = ['id', 'url', 'name', 'description', 'location', 'owner', 'image', 'created_at', 'updated_at']
 
 
 class GroupMembershipSerializer(serializers.ModelSerializer):
