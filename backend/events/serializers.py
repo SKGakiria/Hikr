@@ -6,7 +6,7 @@ from .models import Event, EventAttendance
 class EventSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Event
-        fields = "__all__"
+        fields = ['id', 'url', 'name', 'description', 'location', 'difficulty', 'organizer', 'date', 'time', 'created_at', 'updated_at']
 
 
 class EventAttendanceSerializer(HyperlinkedModelSerializer):
