@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status, serializers, permissions
 from rest_framework.exceptions import MethodNotAllowed, NotFound
+from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from .models import Group, GroupMembership
 from .permissions import IsOwnerOrReadOnly
@@ -13,6 +14,8 @@ class GroupListCreateView(generics.ListCreateAPIView):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['name', 'location', 'description']
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):

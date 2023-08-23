@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status, serializers, permissions
 from rest_framework.exceptions import MethodNotAllowed, NotFound
+from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from groups.permissions import IsOwnerOrReadOnly
 from .models import Event, EventAttendance
@@ -13,6 +14,8 @@ class EventListCreateView(generics.ListCreateAPIView):
     """
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    filter_backends = [SearchFilter]
+    search_fields = [ 'name', 'location', 'date', 'description']
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):

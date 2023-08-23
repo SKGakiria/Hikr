@@ -15,6 +15,4 @@ urlpatterns = [
     path("events/<int:pk>/participants/<int:participant_pk>/", EventAttendanceDeleteView.as_view(), name="event-participants-detail"),
     path("users/", UserListCreateView.as_view(), name="user-list"),
     path("users/<int:pk>/", UserRetrieveUpdateDeleteView.as_view(), name="user-detail"),
-    path('search/groups/', GroupSearchView.as_view(), name='group-search'),
-    path('search/events/', EventSearchView.as_view(), name='event-search'),
 ]
