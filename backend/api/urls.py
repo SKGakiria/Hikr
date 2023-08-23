@@ -2,6 +2,7 @@ from django.urls import path
 from users.views import UserListCreateView, UserRetrieveUpdateDeleteView
 from groups.views import GroupListCreateView, GroupRetrieveUpdateDeleteView, GroupMembershipListCreateView, GroupMembershipDeleteView
 from events.views import EventListCreateView, EventRetrieveUpdateDeleteView, EventAttendanceListCreateView, EventAttendanceDeleteView
+from .views import GroupSearchView, EventSearchView
 
 urlpatterns = [
     path('groups/', GroupListCreateView.as_view(), name='group-list'),
@@ -14,4 +15,6 @@ urlpatterns = [
     path("events/<int:pk>/participants/<int:participant_pk>/", EventAttendanceDeleteView.as_view(), name="event-participants-detail"),
     path("users/", UserListCreateView.as_view(), name="user-list"),
     path("users/<int:pk>/", UserRetrieveUpdateDeleteView.as_view(), name="user-detail"),
+    path('search/groups/', GroupSearchView.as_view(), name='group-search'),
+    path('search/events/', EventSearchView.as_view(), name='event-search'),
 ]
