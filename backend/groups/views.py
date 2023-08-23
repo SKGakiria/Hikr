@@ -11,6 +11,7 @@ from .serializers import GroupSerializer, GroupMembershipSerializer
 class GroupListCreateView(generics.ListCreateAPIView):
     """
     List all groups, or create a new group.
+    Searchable fileds: name, location, description
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer

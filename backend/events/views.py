@@ -11,6 +11,7 @@ from .serializers import EventSerializer, EventAttendanceSerializer
 class EventListCreateView(generics.ListCreateAPIView):
     """
     List all events, or create a new event.
+    Searchable fileds: name, location, date, description
     """
     queryset = Event.objects.all()
     serializer_class = EventSerializer

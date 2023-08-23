@@ -2,7 +2,7 @@ from django.urls import path
 from users.views import UserListCreateView, UserRetrieveUpdateDeleteView
 from groups.views import GroupListCreateView, GroupRetrieveUpdateDeleteView, GroupMembershipListCreateView, GroupMembershipDeleteView
 from events.views import EventListCreateView, EventRetrieveUpdateDeleteView, EventAttendanceListCreateView, EventAttendanceDeleteView
-from .views import GroupSearchView, EventSearchView
+
 
 urlpatterns = [
     path('groups/', GroupListCreateView.as_view(), name='group-list'),
