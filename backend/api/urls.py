@@ -2,9 +2,11 @@ from django.urls import path
 from users.views import UserListCreateView, UserRetrieveUpdateDeleteView
 from groups.views import GroupListCreateView, GroupRetrieveUpdateDeleteView, GroupMembershipListCreateView, GroupMembershipDeleteView
 from events.views import EventListCreateView, EventRetrieveUpdateDeleteView, EventAttendanceListCreateView, EventAttendanceDeleteView
+from .views import api_root
 
 
 urlpatterns = [
+    path('', api_root, name='api-root'),
     path('groups/', GroupListCreateView.as_view(), name='group-list'),
     path('groups/<int:pk>/', GroupRetrieveUpdateDeleteView.as_view(), name='group-detail'),
     path('groups/<int:pk>/members/', GroupMembershipListCreateView.as_view(), name='group-membership-list'),
