@@ -66,10 +66,9 @@ class GroupMembershipListCreateView(generics.ListCreateAPIView):
         serializer.save(user=user, group=group)
 
 
-class GroupMembershipDeleteView(generics.RetrieveDestroyAPIView):
+class GroupMembershipDeleteView(generics.DestroyAPIView):
     """
     Delete a group membership instance.
-    Retrieve and update are not allowed.
     """
     queryset = GroupMembership.objects.all()
     serializer_class = GroupMembershipSerializer
@@ -89,6 +88,3 @@ class GroupMembershipDeleteView(generics.RetrieveDestroyAPIView):
 
         group_membership.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
-    def get(self, request, *args, **kwargs):
-        raise MethodNotAllowed(request.method)

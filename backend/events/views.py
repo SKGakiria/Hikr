@@ -65,10 +65,9 @@ class EventAttendanceListCreateView(generics.ListCreateAPIView):
         serializer.save(user=user, event=event)
 
 
-class EventAttendanceDeleteView(generics.RetrieveDestroyAPIView):
+class EventAttendanceDeleteView(generics.DestroyAPIView):
     """
     Delete an event attendee/participant.
-    Retrieve and update are not allowed.
     """
     queryset = EventAttendance.objects.all()
     serializer_class = EventAttendanceSerializer
@@ -88,6 +87,3 @@ class EventAttendanceDeleteView(generics.RetrieveDestroyAPIView):
         
         event_attendance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-    def get(self, request, *args, **kwargs):
-        raise MethodNotAllowed(request.method)
