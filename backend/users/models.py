@@ -84,18 +84,3 @@ class User(AbstractUser):
         Returns a string representation of `User`.
         """
         return f"{self.username}: {self.email}"
-
-    # def get_absolute_url(self):
-    #     return reverse("user", args=[self.username])
-
-    def email_exists(self):
-        """
-        Check if email exists in database. Returns True if exists, False otherwise.
-        """
-        return User.objects.filter(email=self.email).exists()
-
-    def username_exists(self):
-        """
-        Check if username exists in database. Returns True if exists, False otherwise.
-        """
-        return User.objects.filter(username=self.username).exists()
