@@ -1,12 +1,15 @@
+from django.contrib.auth import get_user_model, login
 from rest_framework import generics, permissions
-from .models import User
+from knox.views import LoginView as KnoxLoginView
 from .permissions import IsSelfOrReadOnly
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserRegistrationSerializer, CustomAuthTokenSerializer
 
 
-class UserListCreateView(generics.ListCreateAPIView):
+User = get_user_model()
+
+class UserListView(generics.ListAPIView):
     """
-    List all users, or create a new user.
+    List all users.
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -20,3 +23,24 @@ class UserRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsSelfOrReadOnly]
+
+
+class UserRegisterView(generics.CreateAPIView):
+    """
+    Register a new user.
+    """
+    serializer_class = UserRegistrationSerializer
+    permission_classes = [permissions.AllowAny]
+
+        
+class LoginView(KnoxLoginView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        serializer = CustomAuthTokenSerializer(data=request.data)
+        print(serializer)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        print(user)
+        login(request, user)
+        return super(LoginView, self).post(request, format=None)
