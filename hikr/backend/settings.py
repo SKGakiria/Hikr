@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'api',
     'events',
     'groups',
+    'frontend',
     'users',
     'rest_framework',
     'knox',
