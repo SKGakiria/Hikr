@@ -15,21 +15,28 @@
     <header id="main_header" class="top-0 bg-white mb-10 xs:mb-0">
         <div class="px-6 sm:px-4 xl:px-4 flex flex-col">
             <div class="flex flex-row items-center justify-start d1ca6z13"><a id="homepage-link" href="#homelink"
-                    aria-label="Hikr logo"><img src="/static/images/logo.png" alt="Hikr logo"></a></div>
+                    aria-label="Hikr logo"><img src="../static/images/logo.png" alt="Hikr logo" height="90" width="90"></a></div>
         </div>
     </header>
+    <style>
+        body {
+            background-image: url('../static/images/bg-image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
     <div class="flex flex-col flex-grow">
         <main id="main">
             <div class="flex flex-col items-center flex-grow">
                 <div class="px-6 sm:px-4 xl:px-0 md:max-w-screen w-full flex flex-col items-center mb-16 mt-4 sm:mt-10">
                     <div
-                        class="sm:border sm:border-gray2 sm:rounded-lg sm:p-8 sm:pb-15 relative w-full flex flex-col items-center d1jywajc">
+                        class="sm:border sm:border-gray2 sm:rounded-lg sm:p-8 sm:pb-15 relative w-full flex flex-col items-center d1jywajc" style="background-color: #fff;">
                         <section class="w-full sbdsy28 flex flex-col items-center" data-event-category="Member Login">
                             <span class="sr-only" aria-live="polite">You
                                 are on login view</span>
                             <form action="#" class="w-full pt-18 sm:pt-8">
                                 <div class="flex flex-col items-start">
-                                    <h1 class="ds-font-title-2 font-semibold mb-2">Sign up</h1>
+                                    <h1 class="ds-font-title-2 font-semibold mb-2" style="font-size: 24px; text-align: center;">Sign up</h1>
                                 </div>
                                 <div class="w-full flex flex-col space-y-6 mb-4 mt-8">
                                     <div class="flex flex-col-reverse">
@@ -98,7 +105,7 @@
                                     <button data-testid="submit-email-registration" type="submit"
                                         class="w-full ds-font-title-3 h-12 p14rljdx" name="submitRegistrationButton"
                                         data-element-name="register-submit-btn"
-                                        data-event-label="register-with-email-signup">Sign
+                                        data-event-label="register-with-email-signup" style="background-color: #26a269;">Sign
                                         up</button>
                                 </div>
                                 <div class="flex space-x-1 justify-center"><span>Already a member?</span><a
