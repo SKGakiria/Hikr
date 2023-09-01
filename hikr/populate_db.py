@@ -428,7 +428,7 @@ for user in users:
         location=random.choice(user_locations),
         password="test_password",
     )
-print(f"✅Users created successfully.")
+print(f"✅ Users created successfully.")
 
 
 users = [user for user in User.objects.all()]
@@ -457,7 +457,7 @@ for index, event in enumerate(hiking_events):
     except:
         pass
 
-print(f"✅Events created successfully.")
+print(f"✅ Events created successfully.")
 
 
 image_folder = "group_images/"
@@ -477,4 +477,4 @@ for index, group in enumerate(hiking_groups):
     except:
         pass
 
-print(f"✅Groups created successfully.")
+print(f"✅ Groups created successfully.")

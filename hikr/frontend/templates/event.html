@@ -4,15 +4,20 @@
 <head>
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../static/styles/main.css"/>
-    <link rel="stylesheet" href="../static/styles/styles.css"/>
+    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon" sizes="any" />
+    <link rel="stylesheet" href="../static/styles/main.css" />
+    <link rel="stylesheet" href="../static/styles/styles.css" />
     <title> {Event Name} | Hikr</title>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
+    <script src="../static/scripts/populate-header-footer.js"></script>
 </head>
 
 <body class="font-body">
-    <!-- Header goes here -->
+    <!-- Start of header -->
+    <header class="z-50 top-0 bg-white mb-10 xs:mb-0" data-event-label="Header"></header>
+    <!-- End of header -->
     <div class="flex flex-col flex-grow">
         <main id="main" class="flex flex-col items-center justify-between flex-grow">
             <div class="flex flex-col items-center flex-grow"></div>
@@ -60,7 +65,7 @@
                                 <div class="emrv9za" data-event-label="event-home">
                                     <div>
                                         <picture data-testid="event-description-image">
-                                            <div class="w-full mt-0 lg:mt-8"><img alt="{{ EVENT TITLE }}"
+                                            <div class="w-full mt-0 lg:mt-8"><img alt=""
                                                     fetchpriority="high" width="375" height="210" decoding="async"
                                                     data-nimg="1" class="w-full" style="color:transparent"
                                                     srcset="/static/images/event.jpg" src="/static/images/event.jpg">
@@ -85,9 +90,9 @@
                                 <div class="hidden lg:block">
                                     <div class="lg:p-6 bg-white rounded-2xl"><a id="event-group-link"
                                             class="hover:no-underline" data-event-label="event-group"
-                                            href="{{ URL TO PROFILE }}">
+                                            href="">
                                             <div class="flex flex-row py-4 lg:py-0 items-center ">
-                                                <div class="dewqijm"><img alt="{{Organizer Name}}"
+                                                <div class="dewqijm"><img alt=""
                                                         data-testid="next-image" loading="lazy" width="56" height="56"
                                                         decoding="async" data-nimg="1" class="rounded"
                                                         style="color:transparent" srcset="/static/images/event.jpg"
@@ -246,7 +251,10 @@
             </div>
         </main>
     </div>
-    <!-- Footer here -->
+    <!-- start of footer -->
+    <footer id="main_footer" role="contentinfo" class="bg-gray7 text-gray1 pt-4 z-0 mt-0" data-event-label="Footer">
+    </footer>
+    <!-- end of footer -->
 </body>
 
 </html>

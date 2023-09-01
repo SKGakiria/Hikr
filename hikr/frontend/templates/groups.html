@@ -5,14 +5,20 @@
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="favicon" type="image/x-icon" sizes="any" />
-    <link rel="stylesheet" href="../static/styles/main.css"/>
-    <link rel="stylesheet" href="../static/styles/styles.css"/>
+    <link rel="stylesheet" href="../static/styles/main.css" />
+    <link rel="stylesheet" href="../static/styles/styles.css" />
     <title>Find Groups | Hikr</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
+    <script src="../static/scripts/populate-header-footer.js"></script>
+
 </head>
 
 <body class="font-body">
-    <!-- Header goes here -->
+    <!-- Start of header -->
+    <header class="z-50 top-0 bg-white mb-10 xs:mb-0" data-event-label="Header"></header>
+    <!-- End of header -->
     <div class="flex flex-col flex-grow">
         <main id="main" class="flex flex-col items-center flex-grow">
             <div class="px-6 sm:px-4 xl:px-4 w-full max-w-screen-lg mb-16">
@@ -97,7 +103,10 @@
             </div>
         </main>
     </div>
-    <!-- Footer goes here -->
+    <!-- start of footer -->
+    <footer role="contentinfo" class="bg-gray7 text-gray1 pt-4 z-0 mt-0" data-event-label="Footer">
+    </footer>
+    <!-- end of footer -->
 </body>
 
 </html>
