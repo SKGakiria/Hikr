@@ -1,2 +1,2 @@
-# STATIC
-Contains the Images, HTML and CSS files
+# Frontend
+Contains the Images, HTML, CSS and JavaScript files.
