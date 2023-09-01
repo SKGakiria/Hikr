@@ -15,7 +15,7 @@ Assumptions:
     in the format 'event_1.jpg', 'event_2.jpg', etc. and 'group_1.jpg', 'group_2.jpg', etc.
 - The images for events and groups are of `.jpg` format.
 
-Note: You can find the images hosted here: 
+Note: You can find sample images hosted here: https://drive.google.com/drive/folders/1e7oFwf6U5u1plsp12ZuGyTBxGwjVqaV3?usp=sharing
 
 Usage:
 1. Ensure the virtual environment is activated.
