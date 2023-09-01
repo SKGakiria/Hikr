@@ -449,8 +449,6 @@ for index, event in enumerate(hiking_events):
         difficulty=event.get("difficulty", "beginner"),
     )
 
-    # Assuming you have an 'image' field in your Event model.
-    # You'll need to replace 'image' with the actual field name in your model.
     try:
         image_filename = f"event-{index + 1}.jpg"
         image_path = os.path.join(image_folder, image_filename)
