@@ -5,13 +5,14 @@
   <meta charSet="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon" sizes="any" />
-  <link rel="stylesheet" href="../static/styles/main.css" />
+  <link rel="preload" href="../static/styles/main.css" as="style" onload="this.rel='stylesheet'"/>
   <link rel="stylesheet" href="../static/styles/styles.css" />
   <title>Hikr | Explore nature together!</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
   <script src="../static/scripts/populate-header-footer.js"></script>
+  <script src="../static/scripts/home.js"></script>
 </head>
 
 <body class="font-body">
@@ -53,48 +54,8 @@
             </div>
           </div>
           <div class="px-0 gl:px-0 mb-2 gl:mb-10 smd:w-[580px] gl:w-[888px] xl:w-[1196px]">
-            <div class="flex flex-col smd:flex-row flex-wrap gap-2 smd:gap-9 bg-gray1 smd:bg-white">
-
-
-              <!-- Tile to duplicate -->
-              <div data-recommendationid="" data-recommendationsource="" data-eventref="294945844"
-                class="p-0 bg-clip-padding bg-cover bg-transparent relative h-full flex bg-white z-0 break-words transition-shadow duration-300 px-4 pt-6 pb-5 smd:px-0 smd:pt-0 smd:flex-row smd:justify-start smd:rounded e3uszjm">
-                <a class="w-full inline cursor-pointer relative hover:no-underline group" href="#GROUP DETAIL LINK"
-                  data-event-label="eventsShelf IRL-Event card variant">
-                  <div class="flex w-full h-full flex-row smd:flex-col smd:flex-col-reverse">
-                    <div class="space-y-2 grow pr-4 smd:mt-3">
-                      <h3
-                        class="text-lg leading-6 font-semibold line-clamp-4 smd:text-xl smd:leading-6 group-hover:underline h1lk27w4">
-                        Event title</h3>
-                      <p class="line-clamp-2 text-sm text-gray6 font-medium">Hosted by: John Doe</p>
-                      <div>
-                        <div class="flex items-center space-x-1.5 text-gray7">
-                          <div style="width:20px;height:20px"></div>
-                          <div class="flex flex-col uppercase text-sm leading-5 tracking-tight"><time title="">Sat, Sep
-                              9 ·
-                              8:00 AM EAT</time></div>
-                        </div>
-                      </div>
-                      <div class="flex gap-x-4 flex-wrap gl:pt-1">
-                        <div class="flex items-center space-x-1.5 text-gray7">
-                          <div style="width:20px;height:20px"></div><span>8 going</span>
-                        </div>
-                        <div class="flex items-center space-x-1.5 text-gray7">
-                          <div style="width:20px;height:20px"></div><span class="inline">Free</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="bg-transparent ml-3 smd:ml-0 gl:mr-0 d1umy16x">
-                      <div class="relative overflow-hidden bg-transparent w-full" style="height:90px"><img
-                          alt="TITLE OF EVENT" loading="lazy" width="90" height="90" decoding="async" data-nimg="1"
-                          class="rounded-t-lg rounded-lg w-full h-full absolute top-0 left-0 object-cover object-center group-hover:opacity-80"
-                          style="color:transparent" srcSet="/static/images/event.jpg" />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <!-- end of tile to duplicate -->
+            <div class="flex flex-col smd:flex-row flex-wrap gap-2 smd:gap-9 bg-gray1 smd:bg-white" id="eventContainer">
+              <!-- Events tiles (8) -->
             </div>
           </div>
         </div>
