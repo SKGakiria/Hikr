@@ -49,7 +49,7 @@ async function fetchEventsData (eventsUrl) {
                 </div>
             `;
 
-    $('#eventContainer').append(eventTile);
+    $('#eventsContainer').append(eventTile);
   }
 }
 
@@ -71,7 +71,7 @@ async function fetchGroupsData (groupsUrl) {
         <div class="text-viridian group-hover:underline">Read more</div>
       </a></div>
         `;
-    $('#groupContainer').append(groupTile);
+    $('#groupsContainer').append(groupTile);
   }
 }
 
