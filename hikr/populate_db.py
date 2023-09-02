@@ -441,6 +441,7 @@ for index, event in enumerate(hiking_events):
     event_obj = Event.objects.create(
         owner=random.choice(users[:5]),
         name=event["name"],
+        description=event["description"],
         date=(datetime.now() + timedelta(days=random.randint(7, 90))).strftime(
             "%Y-%m-%d"
         ),
