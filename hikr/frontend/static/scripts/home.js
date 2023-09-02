@@ -1,8 +1,8 @@
 $(document).ready(function () {
   const eventsUrl = '/api/events/';
-  //  const groupsUrl = '/api/groups/';
+  const groupsUrl = '/api/groups/';
   fetchEventsData(eventsUrl);
-  // fetchGroupsData(groupsUrl);
+  fetchGroupsData(groupsUrl);
 });
 
 async function fetchEventsData (eventsUrl) {
@@ -14,10 +14,9 @@ async function fetchEventsData (eventsUrl) {
     const eventParticipantsCount = await getParticipantsCount(event.id);
     const formattedDateTime = formatDateAndTime(event.date, event.time);
 
-    // Create a new event tile based on your provided HTML structure
     const eventTile = `
                 <div data-recommendationid="" data-recommendationsource="" data-eventref="${event.id}" class="p-0 bg-clip-padding bg-cover bg-transparent relative h-full flex bg-white z-0 break-words transition-shadow duration-300 px-4 pt-6 pb-5 smd:px-0 smd:pt-0 smd:flex-row smd:justify-start smd:rounded e3uszjm">
-                    <a class="w-full inline cursor-pointer relative hover:no-underline group" href="/event/${event.id}" data-event-label="eventsShelf IRL-Event card variant">
+                    <a class="w-full inline cursor-pointer relative hover:no-underline group" href="/events/${event.id}" data-event-label="eventsShelf IRL-Event card variant">
                         <div class="flex w-full h-full flex-row smd:flex-col smd:flex-col-reverse">
                             <div class="space-y-2 grow pr-4 smd:mt-3">
                                 <h3 class="text-lg leading-6 font-semibold line-clamp-4 smd:text-xl smd:leading-6 group-hover:underline h1lk27w4">${event.name}</h3>
@@ -54,6 +53,28 @@ async function fetchEventsData (eventsUrl) {
   }
 }
 
+async function fetchGroupsData (groupsUrl) {
+  const data = await $.get(groupsUrl);
+  // Iterate through the first 3 results from the API response
+  for (let i = 0; i < 3 && i < data.results.length; i++) {
+    const group = data.results[i];
+    const groupOwner = await getFullUserName(group.owner);
+    const firstParagraph = extractFirstParagraph(group.description);
+    const groupTile = `
+        <div class="flex-1"><a href="groups/${group.id}/" data-event-label="Story 1 variant" target="_blank"
+        rel="noopener noreferrer" class="cursor-pointer hover:no-underline group"><img alt="${group.name}" loading="lazy"
+          width="375" height="191" decoding="async" data-nimg="1"
+          class="w-full rounded-lg mb-6 group-hover:opacity-80" style="color:transparent" src="${group.image}" />
+        <h3 class="mb-3 pr-4 text-lg font-semibold">${group.name}</h3>
+        <div class="mb-4 line-clamp-2 text-sm text-gray7 font-medium">Created by: ${groupOwner}</div>
+        <div class="mb-4 text-gray6">${firstParagraph}</div>
+        <div class="text-viridian group-hover:underline">Read more</div>
+      </a></div>
+        `;
+    $('#groupContainer').append(groupTile);
+  }
+}
+
 async function getFullUserName (userUrl) {
   try {
     const userData = await $.get(userUrl);
@@ -73,11 +94,11 @@ async function getParticipantsCount (eventId) {
       return response.length;
     } else {
       // Handle the case where there is no content (HTTP 204) or unexpected data
-      return 0;
+      return 1; // The creator of the event is always a participant.
     }
   } catch (error) {
     console.error('Error:', error);
-    return 0;
+    return 1;
   }
 }
 
@@ -105,4 +126,16 @@ function formatDateAndTime (apiDate, apiTime) {
   const formattedDateAndTime = `${dayOfWeek}, ${month} ${day} · ${formattedHour}:${minute.toString().padStart(2, '0')} ${ampm} ${timeZoneAbbreviation}`;
 
   return formattedDateAndTime;
+}
+
+// Function to extract the first paragraph from an HTML string
+function extractFirstParagraph (htmlString) {
+  const closingTagIndex = htmlString.indexOf('</p>');
+
+  if (closingTagIndex !== -1) {
+    const firstParagraphText = htmlString.slice(3, closingTagIndex);
+    return firstParagraphText;
+  } else {
+    return htmlString;
+  }
 }

@@ -5,7 +5,7 @@
   <meta charSet="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon" sizes="any" />
-  <link rel="preload" href="../static/styles/main.css" as="style" onload="this.rel='stylesheet'"/>
+  <link rel="preload" href="../static/styles/main.css" as="style" onload="this.rel='stylesheet'" />
   <link rel="stylesheet" href="../static/styles/styles.css" />
   <title>Hikr | Explore nature together!</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -24,9 +24,9 @@
       <div class="relative w-full h-[375px] smd:h-[297px] gl:h-[572px] mb-10 md:mb-12 overflow-hidden">
         <div class="absolute top-0 right-0 bottom-0 left-0">
           <div>
-            <img alt="TITLE OF EVENT" loading="lazy" width="90" height="90" decoding="async" data-nimg="1"
+            <img alt="background image" loading="lazy" width="90" height="90" decoding="async" data-nimg="1"
               class="rounded-t-lg rounded-lg w-full h-full absolute top-0 left-0 object-cover object-center group-hover:opacity-80"
-              style="color:transparent" srcSet="../static/images/bg-image.jpg" />
+              style="color:transparent" src="../static/images/bg-image.jpg" />
 
           </div>
         </div>
@@ -55,7 +55,7 @@
           </div>
           <div class="px-0 gl:px-0 mb-2 gl:mb-10 smd:w-[580px] gl:w-[888px] xl:w-[1196px]">
             <div class="flex flex-col smd:flex-row flex-wrap gap-2 smd:gap-9 bg-gray1 smd:bg-white" id="eventContainer">
-              <!-- Events tiles (8) -->
+              <!-- Events tiles -->
             </div>
           </div>
         </div>
@@ -92,17 +92,8 @@
               class="flex flex-wrap items-baseline gap-x-1 gap-y-2 md:gap-x-2 ds-font-title-3 xl:text-[1.75rem] xl:leading-9 font-semibold mb-4">
               Popular Groups</h2>
             <p class="w-full sm:w-3/4 mb-8 md:mb-7 text-gray6">Be part of the fastest growing groups.</p>
-            <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 space-x-0 md:space-x-8">
-              <!-- Duplicate the tile 3 times. -->
-              <div class="flex-1"><a href="#GROUP DETAIL LINK" data-event-label="Story 1 variant" target="_blank"
-                  rel="noopener noreferrer" class="cursor-pointer hover:no-underline group"><img alt="" loading="lazy"
-                    width="375" height="191" decoding="async" data-nimg="1"
-                    class="w-full rounded-lg mb-6 group-hover:opacity-80" style="color:transparent"
-                    srcSet="/static/images/group.jpg" src="/static/images/group.jpg" />
-                  <h3 class="mb-3 pr-4 text-lg font-semibold">Group Name</h3>
-                  <div class="mb-4 text-gray6">Created by: John Doe</div>
-                </a></div>
-              <!-- end of tile to duplicate -->
+            <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 space-x-0 md:space-x-8" id="groupContainer">
+              <!-- group tiles -->
             </div>
           </div>
         </div>
