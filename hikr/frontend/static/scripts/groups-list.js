@@ -42,7 +42,7 @@ async function fetchGroupsData (groupsUrl) {
             </a></div>
     </div>
         `;
-        $('#groupContainer').append(groupTile);
+        $('#groupListContainer').append(groupTile);
     }
 }
 
