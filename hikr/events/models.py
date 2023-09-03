@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from groups.models import BaseModel
 from django_resized import ResizedImageField
 
@@ -43,6 +45,11 @@ class Event(BaseModel):
         Return a string representation of the `Event`
         """
         return self.name
+
+@receiver(post_save, sender=Event)
+def create_event_attendance(sender, instance, created, **kwargs):
+    if created:
+        EventAttendance.objects.create(event=instance, user=instance.owner, is_admin=True)
 
 
 class EventAttendance(models.Model):
