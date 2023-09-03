@@ -4,21 +4,22 @@
 <head>
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon" sizes="any" />
-    <link rel="stylesheet" href="../static/styles/main.css" />
-    <link rel="stylesheet" href="../static/styles/styles.css" />
-    <title> {Group Name} | Hikr</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" sizes="any" />
+    <link rel="preload" href="{% static 'styles/main.css' %}" as="style" onload="this.rel='stylesheet'" />
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+    <title>{{ group.name }} | Hikr</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
-    <script src="../static/scripts/common.js"></script>
+    <script src="{% static 'scripts/common.js' %}"></script>
 </head>
 
 <body class="font-body">
     <!-- Start of header -->
     <header class="z-50 top-0 bg-white mb-10 xs:mb-0" data-event-label="Header"></header>
     <!-- End of header -->
-    <div class="flex-grow flex flex-col items-center w-full">
+    <div class="flex-grow flex flex-col items-center w-full" id="top">
         <main id="main" class="flex flex-col w-full">
             <div class="flex flex-col space-y-1"></div>
             <div>
@@ -27,41 +28,43 @@
                     <div class="md:max-w-[600px] relative w-full md:w-3/5 md:pr-6"><img alt="" fetchpriority="high"
                             loading="eager" width="600" height="100" decoding="async" data-nimg="1"
                             class="md:rounded-lg object-cover object-center aspect-video w-full"
-                            style="color:transparent" src="/static/images/group.jpg" />
+                            style="color:transparent" src="{{ group.image.url }}" />
                     </div>
                     <div class="flex flex-col justify-between space-y-2 w-full md:w-2/5 px-4 md:px-0">
-                        <div><a id="group-name-link" href="#LINK TO GROUP" data-event-label="group-name-link"
+                        <div><a id="group-name-link" href="#top" data-event-label="group-name-link"
                                 class="hover:no-underline" data-event-category="GroupHome">
-                                <h1 class="ds-font-title-1">Title of the Group</h1>
+                                <h1 class="ds-font-title-1 font-extrabold">{{ group.name }}</h1>
                             </a>
                             <div class="mt-5"></div>
                             <div class="flex flex-col space-y-1">
                                 <div class="flex flex-row space-x-1.5 items-center">
-                                    <div class="w-6 h-6">
+                                    <i class="fa-solid fa-location-dot fa-xl"
+                                    style="color: #c0bfbc;"></i>
+                                    <div class="w-2 h-6">
                                         <div></div>
                                     </div>
-                                    <div class="text-sm">Event Location</div>
+                                    <div class="text-sm">{{ group.location }}</div>
                                     </a>
                                 </div>
-                                <div class="flex flex-row space-x-1.5 items-center">
-                                    <div class="w-6 h-6">
+                                <div class="flex flex-row space-x-1.5 items-center text-sm">
+                                    <i class="fa-solid fa-user-group fa-xl" style="color: #c0bfbc;"></i>
+                                    <div class="w-1 h-6">
                                         <div></div>
                                     </div>
                                     <div class="flex flex-row space-x-1.5 items-center text-sm">
-                                        <!-- <a id="member-count-link" data-event-label="member-count-link" href="#LINK TO MEMBERS"
-                                                        class="hover:no-underline" data-event-category="GroupHome"> -->
-                                        <div>6,411 members</div>
+                                        <div>{{ group.members.count }} member{{ group.members.count|pluralize}}</div>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="flex flex-row space-x-1.5 items-center">
-                                    <div class="w-6 h-6">
+                                    <i class="fa-regular fa-user fa-xl" style="color: #c0bfbc;"> </i>
+                                    <div class="w-2 h-6">
                                         <div></div>
                                     </div>
                                     <a id="organizer-name-link" data-event-label="organizer-name-link"
-                                        class="text-sm hover:no-underline" href="#LINK TO GROUP ORGANIZER/OWNER PROFILE"
-                                        data-event-category="GroupHome"><span>Organized by <b class="font-semibold">John
-                                                Doe</b></span>
+                                        class="text-sm hover:no-underline" href="#"
+                                        data-event-category="GroupHome"><span>Organized by <b class="font-semibold">
+                                                {{ group.owner.first_name }} {{ group.owner.last_name }}</b></span>
                                     </a>
                                 </div>
                             </div>
@@ -84,7 +87,7 @@
                         <div>
                             <ul class="flex flex-row space-x-10 text-gray7 LinksTab_scroll__HwJbk">
                                 <li><a class="hover:no-underline whitespace-nowrap flex flex-row items-center text-viridian"
-                                        id="about" href="#LINK TO GROUP DETAIL" data-event-label="about-tab"
+                                        id="about" href="#top" data-event-label="about-tab"
                                         data-event-category="GroupHome">Description</a></li>
                             </ul>
                         </div>
@@ -107,9 +110,7 @@
                             <div class="relative overflow-hidden h-auto d1qnntw">
                                 <div class="h-6 w-full absolute bottom-0 d18425ul"></div>
                                 <div inert="" class="break-words utils_description__CKf99">
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia unde ex maiores
-                                        labore molestiae optio aut vel, deserunt enim fugit eaque? Officiis placeat
-                                        officia adipisci velit excepturi dolorum tenetur beatae.</p>
+                                    <p>{{ group.description|safe }}</p>
                                 </div>
                             </div>
                         </div>

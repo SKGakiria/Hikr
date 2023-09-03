@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from events.models import Event
+from groups.models import Group
 
 
 def index(request):
@@ -21,17 +23,28 @@ def events_list(request):
     """
     return render(request, 'events.html')
 
-def group(request):
-    """
-    Render group page.
-    """
-    return render(request, 'group.html')
 
-def event(request):
+def group(request, group_id):
     """
-    Render event page.
+    Render group detail page with data direct from the database.
+    Redirect to groups page if group does not exist.
     """
-    return render(request, 'event.html')
+    try:
+        group = Group.objects.get(pk=group_id)
+        return render(request, 'group.html', {'group': group})
+    except Group.DoesNotExist:
+        return redirect('groups')
+
+def event(request, event_id):
+    """
+    Render event detail page with data direct from the databse.
+    Redirect to events page if event does not exist.
+    """
+    try:
+        event = Event.objects.get(pk=event_id)
+        return render(request, 'event.html', {'event': event})
+    except Event.DoesNotExist:
+        return redirect('events')
 
 
 def sign_up(request):
