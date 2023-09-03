@@ -1,5 +1,5 @@
 # Hikr
-
+Hikr is a web application or platform for connecting people with the shared interest of hiking.
 
 ## Installation
 
