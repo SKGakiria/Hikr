@@ -15,7 +15,7 @@ Create a new PostgreSQL database
 
 ```sh
  $ psql postgres
- $ CREATE DATABASE databasename$
+ $ CREATE DATABASE databasename
  $ \connect databasename
 ```
 
@@ -43,9 +43,9 @@ $ python manage.py runserver
 
 - Once in the folder, run the script as follows:  
 ```sh
-$ ./populated_db.py
+$ ./populate_db.py
 ```
 or 
 ```sh
-$ python3 populated_db.py
+$ python3 populate_db.py
 ```
