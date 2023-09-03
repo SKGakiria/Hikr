@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django_resized import ResizedImageField
 
 
@@ -52,6 +54,12 @@ class Group(BaseModel):
         return self.name
 
 
+@receiver(post_save, sender=Group)
+def create_group_membership(sender, instance, created, **kwargs):
+    if created:
+        GroupMembership.objects.create(group=instance, user=instance.owner, is_admin=True)
+
+
 class GroupMembership(models.Model):
     """
     Define a GroupMembership model.
@@ -64,6 +72,7 @@ class GroupMembership(models.Model):
     """
     user = models.ForeignKey(get_user_model(), related_name="member_groups", on_delete=models.CASCADE)
     group = models.ForeignKey(Group, related_name="members", on_delete=models.CASCADE)
+    is_admin = models.BooleanField(default=False)
     joined_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

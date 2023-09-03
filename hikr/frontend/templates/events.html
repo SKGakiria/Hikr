@@ -2,17 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charSet="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="favicon" type="image/x-icon" sizes="any" />
-    <link rel="stylesheet" href="../static/styles/main.css" />
-    <link rel="stylesheet" href="../static/styles/styles.css" />
-    <title>Find Events | Hikr</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" sizes="any" />
+    <link rel="preload" href="{% static 'styles/main.css' %}" as="style" onload="this.rel='stylesheet'" />
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+    <title> Find Events | Hikr</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
+    <script src="{% static 'scripts/common.js' %}"></script>
+    <script src="{% static 'scripts/events-list.js' %}"></script>
+    <script src="{% static 'scripts/auth.js' %}"></script>
+
 </head>
 
 <body class="font-body">
-    <!-- Header goes here -->
+    <!-- Start of header -->
+    <header class="z-50 top-0 bg-white mb-10 xs:mb-0" data-event-label="Header"></header>
+    <!-- End of header -->
     <div class="flex flex-col flex-grow">
         <main id="main" class="flex flex-col items-center flex-grow">
             <div class="px-6 sm:px-4 xl:px-4 w-full max-w-screen-lg mb-16">
@@ -25,67 +34,8 @@
                     <div class="md:max-w-narrow md:flex-1 w-full">
                         <div class="relative">
                             <div class="max-w-narrow">
-                                <div>
-                                    <!-- Slide to duplicate -->
-                                    <div>
-                                        <div data-recommendationid="5566f1c9-7791-4053-b37f-6ef05a1d89b4"
-                                            data-recommendationsource="ml-popular-events-nearby"
-                                            data-eventref="295300028" data-element-name="categoryResults-eventCard"
-                                            data-testid="categoryResults-eventCard"
-                                            class="p-0 bg-clip-padding bg-cover bg-transparent relative h-full flex bg-white z-0 break-words transition-shadow duration-300 w-full flex-row justify-start py-4 border-t border-gray3 md:pt-4 md:pb-5">
-                                            <a class="w-full inline cursor-pointer relative hover:no-underline"
-                                                href="#DETAIL LINK" data-event-label="Event card"
-                                                id="event-card-in-search-results">
-                                                <div class="flex w-full flex-col">
-                                                    <div
-                                                        class="flex flex-row-reverse md:flex-row flex-1 overflow-hidden">
-                                                        <div class="bg-transparent ml-3 md:mr-3 md:ml-0 d15a685b">
-                                                            <div class="relative overflow-hidden bg-transparent w-full"
-                                                                style="height:125px"><img
-                                                                    alt="Leslie&#x27;s Outside Group Fitness Class"
-                                                                    fetchpriority="high" width="222" height="125"
-                                                                    decoding="async" data-nimg="1"
-                                                                    class="rounded-t-lg rounded-lg w-full absolute top-0 left-0 object-contain object-center"
-                                                                    style="color:transparent"
-                                                                    srcSet="/static/images/event.jpg"
-                                                                    src="/static/images/event.jpg" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="overflow-hidden w-full">
-                                                            <div
-                                                                class="flex justify-between md:items-center flex-col-reverse md:flex-row">
-                                                                <div
-                                                                    class="flex flex-col uppercase text-sm leading-5 tracking-tight text-darkGold font-medium pb-1 pt-1 line-clamp-1 lg:line-clamp-2">
-                                                                    <h3><time class=""
-                                                                            dateTime="2023-08-27T14:00:00Z[UTC]"
-                                                                            title="Sun Aug 27 2023 14:00:00 GMT+0000 (Coordinated Universal Time)">Sun,
-                                                                            Aug 27 · 2:00 PM UTC</time></h3>
-                                                                </div>
-                                                            </div>
-                                                            <h2
-                                                                class="text-gray7 font-medium text-base pt-0 pb-1 line-clamp-3">
-                                                                Event Name
-                                                            </h2>
-                                                            <div class="w-full  text-sm  mx-auto mb-2 md:mb-4">
-                                                                <p class="hidden md:line-clamp-1 text-gray6">
-                                                                    <span class="s1uol3r6">Organizer
-                                                                        <!-- -->:</span>John Doe
-                                                                </p>
-                                                                <p class="hidden md:line-clamp-1 text-viridian ">
-                                                                    Event description...</p>
-                                                            </div>
-                                                            <div class="h-0 sm:h-8 hidden sm:block xmedia">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h-8 mt-1.5 sm:h-0 sm:mt-0 block sm:hidden xmedia">
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <!-- slide to duplicate -->
-
+                                <div id="eventsListContainer">
+                                <!-- Event tiles -->
                                 </div><span style="font-size:0"></span>
                             </div>
                         </div>
@@ -97,7 +47,10 @@
             </div>
         </main>
     </div>
-    <!-- Footer goes here -->
+    <!-- start of footer -->
+    <footer id="main_footer" role="contentinfo" class="bg-gray7 text-gray1 pt-4 z-0 mt-0" data-event-label="Footer">
+    </footer>
+    <!-- end of footer -->
 </body>
 
 </html>

@@ -428,7 +428,7 @@ for user in users:
         location=random.choice(user_locations),
         password="test_password",
     )
-print(f"✅Users created successfully.")
+print(f"✅ Users created successfully.")
 
 
 users = [user for user in User.objects.all()]
@@ -441,6 +441,7 @@ for index, event in enumerate(hiking_events):
     event_obj = Event.objects.create(
         owner=random.choice(users[:5]),
         name=event["name"],
+        description=event["description"],
         date=(datetime.now() + timedelta(days=random.randint(7, 90))).strftime(
             "%Y-%m-%d"
         ),
@@ -449,8 +450,6 @@ for index, event in enumerate(hiking_events):
         difficulty=event.get("difficulty", "beginner"),
     )
 
-    # Assuming you have an 'image' field in your Event model.
-    # You'll need to replace 'image' with the actual field name in your model.
     try:
         image_filename = f"event-{index + 1}.jpg"
         image_path = os.path.join(image_folder, image_filename)
@@ -459,7 +458,7 @@ for index, event in enumerate(hiking_events):
     except:
         pass
 
-print(f"✅Events created successfully.")
+print(f"✅ Events created successfully.")
 
 
 image_folder = "group_images/"
@@ -479,4 +478,4 @@ for index, group in enumerate(hiking_groups):
     except:
         pass
 
-print(f"✅Groups created successfully.")
+print(f"✅ Groups created successfully.")

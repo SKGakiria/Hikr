@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, get_user_model, login, logout
+from events.models import Event
+from groups.models import Group
 
 
 def index(request):
@@ -21,23 +24,43 @@ def events_list(request):
     """
     return render(request, 'events.html')
 
-def group(request):
-    """
-    Render group page.
-    """
-    return render(request, 'group.html')
 
-def event(request):
+def group(request, group_id):
     """
-    Render event page.
+    Render group detail page with data direct from the database.
+    Redirect to groups page if group does not exist.
     """
-    return render(request, 'event.html')
+    try:
+        group = Group.objects.get(pk=group_id)
+        return render(request, 'group.html', {'group': group})
+    except Group.DoesNotExist:
+        return redirect('groups')
+
+def event(request, event_id):
+    """
+    Render event detail page with data direct from the databse.
+    Redirect to events page if event does not exist.
+    """
+    try:
+        event = Event.objects.get(pk=event_id)
+        return render(request, 'event.html', {'event': event})
+    except Event.DoesNotExist:
+        return redirect('events')
 
 
 def sign_up(request):
     """
     Render sign up page.
     """
+    if request.method == "POST":
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+        username = request.POST.get("useranme")
+        password = request.POST.get("password")
+        location = request.POST.get("location")
+
+
     return render(request, 'sign-up.html')
 
 
