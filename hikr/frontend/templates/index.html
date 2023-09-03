@@ -2,23 +2,26 @@
 <html lang="en">
 
 <head>
-  <meta charSet="utf-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="../static/images/favicon.ico" type="image/x-icon" sizes="any" />
-  <link rel="preload" href="../static/styles/main.css" as="style" onload="this.rel='stylesheet'" />
-  <link rel="stylesheet" href="../static/styles/styles.css" />
-  <title>Hikr | Explore nature together!</title>
+  {% load static %}
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" sizes="any" />
+  <link rel="preload" href="{% static 'styles/main.css' %}" as="style" onload="this.rel='stylesheet'" />
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+  <title> Hikr | Explore nature together!</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
-  <script src="../static/scripts/common.js"></script>
-  <script src="../static/scripts/home.js"></script>
+  <script src="{% static 'scripts/common.js' %}"></script>
+  <script src="{% static 'scripts/home.js' %}"></script>
+  <script src="{% static 'scripts/auth.js' %}"></script>
 </head>
 
 <body class="font-body">
   <!-- Start of header -->
   <header class="z-50 top-0 bg-white mb-10 xs:mb-0" data-event-label="Header"></header>
   <!-- End of header -->
+  <div id="succ-toast" class="toast hidden success-toast"></div>
   <div class="flex flex-col flex-grow z-10">
     <main id="main" class="flex flex-col items-center flex-grow relative overflow-hidden pb-12 smd:pb-16 text-gray7">
       <div class="relative w-full h-[375px] smd:h-[297px] gl:h-[572px] mb-10 md:mb-12 overflow-hidden">
@@ -26,7 +29,7 @@
           <div>
             <img alt="background image" loading="lazy" width="90" height="90" decoding="async" data-nimg="1"
               class="rounded-t-lg rounded-lg w-full h-full absolute top-0 left-0 object-cover object-center group-hover:opacity-80"
-              style="color:transparent" src="../static/images/bg-image.jpg" />
+              style="color:transparent" src="{% static 'images/bg-image.jpg' %}" />
 
           </div>
         </div>

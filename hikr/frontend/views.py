@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, get_user_model, login, logout
 from events.models import Event
 from groups.models import Group
 
@@ -51,6 +52,15 @@ def sign_up(request):
     """
     Render sign up page.
     """
+    if request.method == "POST":
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+        username = request.POST.get("useranme")
+        password = request.POST.get("password")
+        location = request.POST.get("location")
+
+
     return render(request, 'sign-up.html')
 
 

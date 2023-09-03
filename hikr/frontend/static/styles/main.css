@@ -10943,3 +10943,33 @@ video {
         transform: unset
     }
 }
+
+/* CSS for the toast message */
+.toast {
+    transform: translateX(-50%);
+    color: black; /* Change text color to white for better visibility */
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 10;
+    transition: opacity 0.5s;
+    width: 80%; /* Adjust width as needed */
+    max-width: 400px; /* Limit maximum width */
+}
+
+/* CSS for hiding the toast */
+.hidden {
+    opacity: 0;
+    display: none;
+}
+
+/* CSS for the success toast message */
+.success-toast {
+    background-color: #4CAF50; /* Green background color for success */
+}
+
+/* CSS for the error toast message */
+.error-toast {
+    background-color: #f44336; /* Red background color for error */
+}
+
+  

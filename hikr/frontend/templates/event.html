@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charSet="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" sizes="any" />
@@ -129,86 +129,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="w-full"></div>
-                <div class="px-6 sm:px-4 xl:px-0 md:max-w-screen w-full"></div>
-                <div class="w-full">
-                    <div id="" class="px-6 sm:px-4 xl:px-0 md:max-w-screen w-full mt-5 md:mx-auto">
-                        <div class="flex justify-between items-center mb-5"></div>
-                        <div class="border-t border-gray3"></div>
-                    </div>
-                    <div id="similar-events" class="px-6 sm:px-4 xl:px-0 md:max-w-screen w-full mt-5 md:mx-auto">
-                        <div class="flex justify-between items-center mb-5">
-                            <h2 class="font-semibold text-xl">Similar events nearby</h2><a id="similar-events-link"
-                                href="/events/" class="text-viridian" data-event-label="similar-nearby-all-events">See
-                                all</a>
-                        </div>
-                        <ul class="overflow-hidden flex justify-between overflow-x-auto max-w-screen pb-4">
-
-                            <!-- slide to duplicate -->
-                            <li class="ml-8 first:ml-0" data-testid="similar-events-list-item">
-                                <div data-recommendationid="" data-recommendationsource="" data-eventref=""
-                                    data-element-name="LegacyEventCard" data-testid="LegacyEventCard"
-                                    class="p-0 bg-clip-padding bg-cover bg-transparent relative h-full flex z-0 break-words transition-shadow duration-300 flex-row justify-start rounded-lg border border-gray1 xs:p-5 !bg-white ci96ymx">
-                                    <div class="w-full inline cursor-pointer hover:no-underline"
-                                        data-event-label="similar-nearby-event-card">
-                                        <div class="flex flex-col justify-between h-full">
-                                            <div class="flex-shrink">
-                                                <div class="">
-                                                    <div>
-                                                        <div>
-                                                            <div
-                                                                class="flex flex-col uppercase text-sm leading-5 tracking-tight text-viridian font-medium mb-2">
-                                                                <time title="{{ event.date }}T{{ event.time}}">Wed,
-                                                                    Aug 30 · 2:00 AM EAT</time>
-                                                            </div>
-                                                            <div
-                                                                class="whitespace-normal overflow-ellipsis overflow-hidden text-xl font-semibold mb-2 d1s3a3a6">
-                                                                Group Title...
-                                                            </div>
-                                                            <a class="block overflow-hidden overflow-ellipsis whitespace-nowrap text-gray7 mb-2"
-                                                                href="#DETAIL LINK">Organized by: John Doe</a>
-                                                            <div class="flex items-center mb-2">
-                                                                <div class="text-sm text-gray6">
-                                                                    <div class="flex flex-col">
-                                                                        <div class="flex mt-5">
-                                                                            <div data-icon-c="icon-63">
-                                                                                <div><i class="fa-solid fa-location-dot fa-2xl"
-                                                                                        style="color: #c0bfbc;"></i>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div
-                                                                                class="pl-4 md:pl-4.5 lg:pl-5 overflow-hidden">
-                                                                                <div data-testid="venue-name-value">
-                                                                                    Location</div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex-shrink">
-                                                <div class="flex items-center justify-between">
-                                                    <div>
-                                                        <div class="flex justify-end items-center">
-                                                            <div class="flex-shrink eventCard--clickable"><a
-                                                                    href="#JOIN EVENT LINK" data-event-label="attend"
-                                                                    class="py-3.5 lg:py-2.5 px-5 ml-5 border border-linkBlue rounded-lg leading-8 font-medium transition-all fill-current text-linkBlue hover:bg-linkBlue hover:text-white hover:no-underline">Attend</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end of slide to duplicate -->
-                        </ul>
                     </div>
                 </div>
             </div>

@@ -29,11 +29,11 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     """
     email = serializers.EmailField(
         required=True,
-        validators=[UniqueValidator(queryset=User.objects.all())]
+        validators=[UniqueValidator(queryset=User.objects.all(), message="User with the email or username already exists.")]
     )
     username = serializers.CharField(
         required=True,
-        validators=[UniqueValidator(queryset=User.objects.all())]
+        validators=[UniqueValidator(queryset=User.objects.all(), message="User with the email or username already exists.")]
     )
     password = serializers.CharField(
         write_only=True,

@@ -7,7 +7,7 @@ $(document).ready(function () {
     <div class="transition-all ease-linear duration-300 d3hxo23 overflow-hidden sm:overflow-visible">
       <div class="flex flex-row items-center justify-between du3dmzv">
         <div class="block sm:hidden xmedia"></div>
-        <div class="flex flex-row items-center space-x-10"><a id="homepage-link" href="/" class="lg:pl-6"
+        <div class="flex flex-row items-center space-x-10"><a href="/" class="lg:pl-6"
             aria-label="Hikr logo" data-event-label="Hikr logo"><img src="../static/images/logo.png" alt="Hikr logo"
               height="3"></a>
           <div class="m1t1fice hidden gl:block xmedia">
