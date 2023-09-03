@@ -63,12 +63,12 @@ async function memberCount (groupId) {
         if (Array.isArray(response)) {
             return response.length;
         } else {
-            return 1;
+            return 0;
         }
     }
     catch (error) {
         console.error('Error:', error);
-        return 1;
+        return 0;
     }
 
 }

@@ -78,11 +78,11 @@ async function getParticipantsCount (eventId) {
         return response.length;
       } else {
         // Handle the case where there is no content (HTTP 204) or unexpected data
-        return 1; // The creator of the event is always a participant.
+        return 0;
       }
     } catch (error) {
       console.error('Error:', error);
-      return 1;
+      return 0;
     }
   }
 
