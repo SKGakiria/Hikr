@@ -36,7 +36,7 @@ class Group(BaseModel):
     owner = models.ForeignKey(get_user_model(), related_name="owned_groups", on_delete=models.CASCADE)
     name = models.CharField(max_length=225, unique=True)
     image = ResizedImageField(
-        size=[400, 500],
+        size=[768, 1024],
         default="groups/images/default.png",
         upload_to="groups/images",
     )
