@@ -1,16 +1,16 @@
 $(document).ready(function () {
-    const eventsUrl = '/api/events/';
-    fetchEventsData(eventsUrl);
+  const eventsUrl = '/api/events/';
+  fetchEventsData(eventsUrl);
 });
 
 async function fetchEventsData (eventsUrl) {
-    const data = await $.get(eventsUrl);
-    for (let i = 0; i < 8 && i < data.results.length; i++) {
-        const event = data.results[i];
-        const eventOwner = await getFullUserName(event.owner);
-        const eventParticipantsCount = await getParticipantsCount(event.id);
-        const formattedDateTime = formatDateAndTime(event.date, event.time);
-        const eventTile = `
+  const data = await $.get(eventsUrl);
+  for (let i = 0; i < 8 && i < data.results.length; i++) {
+    const event = data.results[i];
+    const eventOwner = await getFullUserName(event.owner);
+    const eventParticipantsCount = await getParticipantsCount(event.id);
+    const formattedDateTime = formatDateAndTime(event.date, event.time);
+    const eventTile = `
         <div>
         <div data-recommendationid=""
             data-recommendationsource="ml-popular-events-nearby"
@@ -64,61 +64,59 @@ async function fetchEventsData (eventsUrl) {
         </div>
     </div>
         `;
-        $('#eventsListContainer').append(eventTile);
-    }
+    $('#eventsListContainer').append(eventTile);
+  }
 }
 
 async function getParticipantsCount (eventId) {
-    const eventParticipantsUrl = '/api/events/' + eventId + '/participants/';
-    try {
-      const response = await $.get(eventParticipantsUrl);
-  
-      // Check if the response contains data and is an array
-      if (Array.isArray(response)) {
-        return response.length;
-      } else {
-        // Handle the case where there is no content (HTTP 204) or unexpected data
-        return 0;
-      }
-    } catch (error) {
-      console.error('Error:', error);
+  const eventParticipantsUrl = '/api/events/' + eventId + '/participants/';
+  try {
+    const response = await $.get(eventParticipantsUrl);
+
+    // Check if the response contains data and is an array
+    if (Array.isArray(response)) {
+      return response.length;
+    } else {
+      // Handle the case where there is no content (HTTP 204) or unexpected data
       return 0;
     }
+  } catch (error) {
+    console.error('Error:', error);
+    return 0;
   }
-
+}
 
 async function getFullUserName (userUrl) {
-    try {
-      const userData = await $.get(userUrl);
-      return userData.first_name + ' ' + userData.last_name;
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  try {
+    const userData = await $.get(userUrl);
+    return userData.first_name + ' ' + userData.last_name;
+  } catch (error) {
+    console.error('Error:', error);
   }
-
+}
 
 function formatDateAndTime (apiDate, apiTime) {
-    // Create a JavaScript Date object from the provided date and time
-    const dateTime = new Date(`${apiDate}T${apiTime}`);
-  
-    // Create an array of month names
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  
-    // Get the day of the week, month, day, hour, and minute
-    const dayOfWeek = dateTime.toLocaleString('en-US', { weekday: 'short' });
-    const month = monthNames[dateTime.getMonth()];
-    const day = dateTime.getDate();
-    const hour = dateTime.getHours();
-    const minute = dateTime.getMinutes();
-  
-    // Format the time as AM/PM
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-    const formattedHour = hour % 12 || 12; // Convert 0 to 12 for 12-hour format
-  
-    const timeZoneAbbreviation = 'EAT';
-  
-    // Create the formatted string
-    const formattedDateAndTime = `${dayOfWeek}, ${month} ${day} · ${formattedHour}:${minute.toString().padStart(2, '0')} ${ampm} ${timeZoneAbbreviation}`;
-  
-    return formattedDateAndTime;
-  }
+  // Create a JavaScript Date object from the provided date and time
+  const dateTime = new Date(`${apiDate}T${apiTime}`);
+
+  // Create an array of month names
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  // Get the day of the week, month, day, hour, and minute
+  const dayOfWeek = dateTime.toLocaleString('en-US', { weekday: 'short' });
+  const month = monthNames[dateTime.getMonth()];
+  const day = dateTime.getDate();
+  const hour = dateTime.getHours();
+  const minute = dateTime.getMinutes();
+
+  // Format the time as AM/PM
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const formattedHour = hour % 12 || 12; // Convert 0 to 12 for 12-hour format
+
+  const timeZoneAbbreviation = 'EAT';
+
+  // Create the formatted string
+  const formattedDateAndTime = `${dayOfWeek}, ${month} ${day} · ${formattedHour}:${minute.toString().padStart(2, '0')} ${ampm} ${timeZoneAbbreviation}`;
+
+  return formattedDateAndTime;
+}
