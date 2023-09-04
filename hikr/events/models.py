@@ -31,7 +31,7 @@ class Event(BaseModel):
     time = models.TimeField(default=datetime.strptime("08:00:00", "%H:%M:%S").time())
     difficulty = models.CharField(max_length=12, choices=DIFFICULTY_CHOICES, default="beginner")
     image = ResizedImageField(
-        size=[400, 500],
+        size=[768, 1024],
         default="events/images/default.png",
         upload_to="events/images",
     )

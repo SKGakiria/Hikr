@@ -64,7 +64,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=40, blank=True, default="")
     location = models.CharField(max_length=100, blank=True, default="")
     avatar = ResizedImageField(
-        size=[370, 259],
+        size=[200, 200],
         default="users/avatars/default.png",
         upload_to="users/avatars",
     )
