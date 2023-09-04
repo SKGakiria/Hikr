@@ -8,7 +8,7 @@ $(document).ready(function () {
 async function fetchEventsData (eventsUrl) {
   const data = await $.get(eventsUrl);
   // Iterate through the first 8 results from the API response
-  for (let i = 0; i < 8 && i < data.results.length; i++) {
+  for (let i = 0; i < 4 && i < data.results.length; i++) {
     const event = data.results[i];
     const eventOwner = await getFullUserName(event.owner);
     const eventParticipantsCount = await getParticipantsCount(event.id);

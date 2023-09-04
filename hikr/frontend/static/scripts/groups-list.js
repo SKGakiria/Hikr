@@ -14,7 +14,7 @@ async function fetchGroupsData (groupsUrl) {
         <div data-testid="group-card"
             class="py-3 border-t border-gray3 bg-white cursor-pointer flex flex-col"><a
                 class="flex hover:no-underline" data-element-name="-groupCard" href="/groups/${group.id}/">
-                <div class="d1xev8qx mr-4 relative hidden sm:block">
+                <div class="d1xev8qx mr-4 relative sm:block">
                   <img alt="${group.name}" loading="lazy" width="178" height="100" class="object-cover object-center rounded-md max-h-[178px]" style="color: transparent;" src="${group.image}"/>
                 </div>
                 <div class="flex flex-col overflow-hidden w-full">
@@ -37,7 +37,6 @@ async function fetchGroupsData (groupsUrl) {
             </a></div>
     </div>`;
     $('#groupListContainer').append(groupTile);
-    console.log(group.image);
   }
 }
 
