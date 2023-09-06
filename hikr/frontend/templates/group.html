@@ -13,6 +13,8 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
     <script src="{% static 'scripts/common.js' %}"></script>
+    <script src="{% static 'scripts/auth.js' %}"></script>
+    <script src="{% static 'scripts/group.js' %}"></script>
 </head>
 
 <body class="font-body">
@@ -69,14 +71,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="md:hidden pt-2">
-                            <div class="flex flex-row space-x-3"><a id="join-group-sidebar"
-                                    data-event-label="join-group" href="#JOIN GROUP LINK"
-                                    data-event-category="GroupHome"
-                                    class="w-full sm:w-auto whitespace-nowrap text-center relative p14rljdx">Join
-                                    this group</a></div>
-                        </div>
                     </div>
                 </section>
             </div>
@@ -86,20 +80,23 @@
                         <div class="LinksTab_left__QYp3t opacity-0"></div>
                         <div>
                             <ul class="flex flex-row space-x-10 text-gray7 LinksTab_scroll__HwJbk">
-                                <li><a class="hover:no-underline whitespace-nowrap flex flex-row items-center text-viridian"
-                                        id="about" href="#top" data-event-label="about-tab"
-                                        data-event-category="GroupHome">Description</a></li>
+                                <li><a class="hover:no-underline whitespace-nowrap flex flex-row items-center text-viridian">Description</a></li>
                             </ul>
                         </div>
-                        <div class="LinksTab_right__HTYIl d1j4vf18"></div>
                     </div>
+                    {% if request.user.is_authenticated and membership %}
                     <div
-                        class="flex-row space-x-3 hidden md:flex whitespace-nowrap w-full md:w-2/5 px-4 md:px-0 min-h-[40px]">
-                        <button id="join-group-button" data-event-label="join-group"
-                            data-event-category="GroupHome"
-                            class="w-full sm:w-auto whitespace-nowrap text-center relative p14rljdx">Join
+                    class="flex-row space-x-3 md:flex whitespace-nowrap w-full md:w-2/5 px-4 md:px-0 min-h-[40px]">
+                    <button id="leave-group-button" data-group-id="{{ group.id }}" class="w-full sm:w-auto whitespace-nowrap text-center relative leave-button">Leave
+                    this group</button>{{ request.user.username }}
+                </div>
+                    {% else %}
+                    <div
+                        class="flex-row space-x-3 md:flex whitespace-nowrap w-full md:w-2/5 px-4 md:px-0 min-h-[40px]">
+                        <button id="join-group-button" data-group-id="{{ group.id }}" class="w-full sm:w-auto whitespace-nowrap text-center relative p14rljdx">Join
                             this group</button>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             <div id="submain" class="bg-gray1 flex flex-col px-4 md:px-0 pb-8">

@@ -10109,6 +10109,16 @@ video {
   border-color: #26a269;
 }
 
+.leave-button {
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  fill: #fff;
+  background-color: rgb(207, 50, 50);
+  border-color: rgb(207, 50, 50);
+  padding: 8px 12px;
+}
+
 .i157fg5d {
   cursor: pointer;
   color: #fff;

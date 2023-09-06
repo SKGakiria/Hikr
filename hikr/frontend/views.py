@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, get_user_model, login, logout
+from django.contrib.auth import logout
 from events.models import Event
-from groups.models import Group
+from groups.models import Group, GroupMembership
 
 
 def index(request):
@@ -32,7 +32,10 @@ def group(request, group_id):
     """
     try:
         group = Group.objects.get(pk=group_id)
-        return render(request, 'group.html', {'group': group})
+        membership = False
+        if request.user.is_authenticated:
+            membership = GroupMembership.objects.filter(group_id=group_id, user=request.user).exists()
+        return render(request, 'group.html', {'group': group, 'membership': membership})
     except Group.DoesNotExist:
         return redirect('groups')
 
@@ -52,15 +55,8 @@ def sign_up(request):
     """
     Render sign up page.
     """
-    if request.method == "POST":
-        first_name = request.POST.get("first_name")
-        last_name = request.POST.get("last_name")
-        email = request.POST.get("email")
-        username = request.POST.get("useranme")
-        password = request.POST.get("password")
-        location = request.POST.get("location")
-
-
+    if request.user.is_authenticated:
+        return redirect('index')
     return render(request, 'sign-up.html')
 
 
@@ -68,4 +64,13 @@ def login(request):
     """
     Render login page.
     """
+    if request.user.is_authenticated:
+        return redirect('index')
     return render(request, 'login.html')
+
+def logout_view(request):
+    """
+    Log user out and redirect to homepage.
+    """
+    logout(request)
+    return redirect('login')

@@ -15,6 +15,29 @@
   <script src="{% static 'scripts/common.js' %}"></script>
   <script src="{% static 'scripts/home.js' %}"></script>
   <script src="{% static 'scripts/auth.js' %}"></script>
+  <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    .animate-fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+    .custom-responsive-text {
+    white-space: normal;
+  }
+    .text-justify {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+  </style>
+
 </head>
 
 <body class="font-body">
@@ -47,8 +70,26 @@
         </div>
       </div>
       <div class="w-full smd:w-auto">
+        <div style="margin-bottom: 5%;"></div>
         <div class="mb-14 smd:mb-8">
           <div class="px-4 smd:px-0 mb-2 smd:mb-6 smd:w-[580px] gl:w-[888px] xl:w-[1196px]">
+            <div class="bg-beach/[.08] rounded-lg hover:no-underline hover:bg-beach/[.12] text-justify" style="padding-bottom: 10%;">
+                <div class="rounded-lg p-8 sm:p-12 relative z-10">
+                  <h2 class="text-4xl sm:text-5x mb-8 text-viridian font-bold animate-fade-in">Explore Nature Together with
+                    Hikr</h2>
+                    <div class="mb-4 text-gray6 text-lg">Exploring nature is great, but it is better and more fun when done together. Hikr is here to connect
+                      hikers to fellow hikers so that they can link up and safely explore as one hiking tribe.
+                      Hikr makes it easy to connect, socialize, and keep fit while in
+                      the safety of a community.</div>
+                  <!-- <a href="/sign-up/"
+                    class="px-8 py-3 bg-viridian text-white font-medium rounded-full hover:bg-viridian-dark transition duration-300 transform hover:scale-105">Join
+                    Hikr</a> -->
+                </div>
+                <div
+                  class="absolute top-0 left-0 w-full h-full rounded-lg pointer-events-none">
+                </div>
+            </div>
+            <div style="margin-bottom: 8%;"></div>
             <div class="flex justify-between items-baseline">
               <h2
                 class="flex flex-wrap items-baseline gap-x-1 gap-y-2 md:gap-x-2 ds-font-title-3 xl:text-[1.75rem] xl:leading-9 font-semibold">
@@ -70,8 +111,8 @@
             <h2
               class="flex flex-wrap items-baseline gap-x-1 gap-y-2 md:gap-x-2 ds-font-title-3 xl:text-[1.75rem] xl:leading-9 font-semibold mb-6">
               How Hikr works</h2>
-            <div class="flex flex-col gl:flex-row gap-y-6 md:gap-x-4 xl:gap-x-8"><a
-                href="#search-form" data-event-label="Search events and groups-CTA variant"
+            <div class="flex flex-col gl:flex-row gap-y-6 md:gap-x-4 xl:gap-x-8"><a href="#search-form"
+                data-event-label="Search events and groups-CTA variant"
                 class="flex flex-1 p-6 md:pt-8 xl:pr-28 gap-6 bg-beach/[.08] rounded-lg hover:no-underline hover:bg-beach/[.12]">
                 <div class="min-w-[41px]">
                   <i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #26a269;"></i>
@@ -114,7 +155,7 @@
   </div>
 
   <!-- start of footer -->
-  <footer id="main_footer"  class="bg-gray7 text-gray1 pt-4 z-0 mt-0" >
+  <footer id="main_footer" class="bg-gray7 text-gray1 pt-4 z-0 mt-0">
   </footer>
   <!-- end of footer -->
 </body>

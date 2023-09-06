@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // User sign up
   $('#signup-form').submit(function (event) {
     event.preventDefault();
 
@@ -31,11 +32,38 @@ $(document).ready(function () {
     });
   });
 
+  // User login
   $('#login-form').submit(function (event) {
+    event.preventDefault()
+    if (sessionStorage.getItem('authToken') !== null) {
+      window.location.href = '/';
+    }
     event.preventDefault();
     const email = $('#email').val();
     const password = $('#password').val();
     login(email, password);
+  });
+
+  // User logout
+  $('#logout-link').on('click', function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/logout/',
+      type: 'POST',
+      contentType: 'application/json',
+      headers: {
+        Authorization: 'Token ' + sessionStorage.getItem('authToken')
+      },
+      success: function (data) {
+        sessionStorage.removeItem('authToken');
+        showToasts(['User logged out successfully!'], 'succ-toast');
+        window.location.href = '/login/';
+        updateHeaderFooter();
+      },
+      error: function (error) {
+        console.error(error);
+      }
+    });
   });
 });
 
@@ -53,14 +81,29 @@ function login (email, password) {
       // Store the authentication token securely
       sessionStorage.setItem('authToken', response.token);
       showToasts(['User logged in successfully!'], 'succ-toast');
-      // Redirect to the home page after login.
       window.location.href = '/';
+      updateHeaderFooter();
     },
     error: function (error) {
       showToasts(['Invalid email or password. Please try again.'], 'err-toast');
       console.error(error);
     }
   });
+}
+
+function updateHeaderFooter () {
+  const authToken = sessionStorage.getItem('authToken');
+  if (authToken) {
+    // User is logged in
+    $('#login-link').hide();
+    $('#signup-link').hide();
+    $('#logout-link').show();
+  } else {
+    // User is logged out
+    $('#login-link').show();
+    $('#signup-link').show();
+    $('#logout-link').hide();
+  }
 }
 
 // Function to show multiple messages
