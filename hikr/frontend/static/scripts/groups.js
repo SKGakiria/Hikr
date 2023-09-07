@@ -11,17 +11,15 @@ async function fetchGroupsData (groupsUrl) {
     const groupsMembersCount = await memberCount(group.id);
     const groupTile = `
       <div class="w-full">
-        <div data-testid="group-card"
-            class="py-3 border-t border-gray3 bg-white cursor-pointer flex flex-col"><a
-                class="flex hover:no-underline" data-element-name="-groupCard" href="/groups/${group.id}/">
-                <div class="d1xev8qx mr-4 relative sm:block">
-                  <img alt="${group.name}" loading="lazy" width="178" height="100" class="object-cover object-center rounded-md max-h-[178px]" style="color: transparent;" src="${group.image}"/>
+        <div class="py-3 border-t border-gray3 bg-white cursor-pointer flex flex-col"><a
+                class="flex hover:no-underline" href="/groups/${group.id}/">
+                <div class="mr-4 relative sm:block">
+                  <img alt="${group.name}" loading="lazy" width="178" height="100" class="object-cover object-center rounded-md max-h-[178px]" style="color: transparent;" src="${group.image}" target=""/>
                 </div>
                 <div class="flex flex-col overflow-hidden w-full">
                     <div class="flex pb-4 justify-between">
                         <div>
-                            <h3 class="pb-0.25 text-xl font-semibold w-full whitespace-normal overflow-ellipsis line-clamp-3 hdv6t0"
-                                data-testid="group-card-title">${group.name}</h3>
+                            <h3 class="pb-0.25 text-xl font-semibold w-full whitespace-normal overflow-ellipsis line-clamp-3 hdv6t0">${group.name}</h3>
                             <h3
                                 class="pb-0.5 text-sm font-medium text-darkGold uppercase">
                                 ${group.location}</h3>

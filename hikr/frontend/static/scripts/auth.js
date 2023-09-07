@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // User sign up
   $('#signup-form').submit(function (event) {
     event.preventDefault();
 
@@ -26,16 +27,25 @@ $(document).ready(function () {
         // Extract and display all error messages from the response
         const errorResponse = JSON.parse(error.responseText);
         const errorMessages = Object.values(errorResponse);
-        showToasts(errorMessages, 'err-toast');
+        alert(errorMessages)
       }
     });
   });
 
+  // User login
   $('#login-form').submit(function (event) {
     event.preventDefault();
     const email = $('#email').val();
     const password = $('#password').val();
     login(email, password);
+  });
+
+  // User logout
+  $('#logout-link').on('click', function () {
+    if (sessionStorage.getItem('authToken')) {
+      sessionStorage.removeItem('authToken');
+      alert('User logged out successfully!')
+    }
   });
 });
 
@@ -52,31 +62,20 @@ function login (email, password) {
     success: function (response) {
       // Store the authentication token securely
       sessionStorage.setItem('authToken', response.token);
-      showToasts(['User logged in successfully!'], 'succ-toast');
-      // Redirect to the home page after login.
-      window.location.href = '/';
+      // Check if there is a 'next' parameter in the URL
+      const queryParams = new URLSearchParams(window.location.search);
+      const nextUrl = queryParams.get('next');
+
+      // Redirect to the 'next' URL if it exists, or to the home page '/'
+      if (nextUrl) {
+        window.location.href = nextUrl;
+      } else {
+        window.location.href = '/';
+      }
     },
     error: function (error) {
-      showToasts(['Invalid email or password. Please try again.'], 'err-toast');
+      alert('Invalid email or password. Please try again.');
       console.error(error);
     }
   });
-}
-
-// Function to show multiple messages
-function showToasts (messages, toastType) {
-  const toast = document.getElementById(toastType);
-  toast.innerHTML = ''; // Clear existing messages
-  messages.forEach(function (message) {
-    const messagePara = document.createElement('p');
-    messagePara.innerText = message;
-    toast.appendChild(messagePara);
-  });
-  toast.style.display = 'block';
-  setTimeout(function () {
-    toast.style.opacity = '0';
-    setTimeout(function () {
-      toast.style.display = 'none';
-    }, 500);
-  }, 5000); // Show for 5 seconds
 }

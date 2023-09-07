@@ -61,7 +61,7 @@ async function fetchGroupsData (groupsUrl) {
     const groupOwner = await getFullUserName(group.owner);
     const firstParagraph = extractFirstParagraph(group.description);
     const groupTile = `
-        <div class="flex-1"><a href="groups/${group.id}/" data-event-label="Story 1 variant" target="_blank"
+        <div class="flex-1"><a href="groups/${group.id}/" target=""
         rel="noopener noreferrer" class="cursor-pointer hover:no-underline group"><img alt="${group.name}" loading="lazy"
           width="375" height="191" decoding="async" data-nimg="1"
           class="w-full rounded-lg mb-6 group-hover:opacity-80" style="color:transparent" src="${group.image}" />

@@ -72,7 +72,7 @@ class GroupMembershipDeleteView(generics.DestroyAPIView):
     """
     queryset = GroupMembership.objects.all()
     serializer_class = GroupMembershipSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def delete(self, request, *args, **kwargs):
         group_id = self.kwargs['pk']
@@ -83,8 +83,8 @@ class GroupMembershipDeleteView(generics.DestroyAPIView):
         except GroupMembership.DoesNotExist:
             raise NotFound("Group membership not found")
         
-        if request.user != group_membership.user or request.user != group_membership.group.owner:
-            raise serializers.ValidationError("You are not authorized to delete this group membership.")
+        if request.user == group_membership.user or request.user == group_membership.group.owner:
+            group_membership.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
-        group_membership.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_403_FORBIDDEN)
