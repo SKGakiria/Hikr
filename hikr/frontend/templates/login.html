@@ -24,6 +24,14 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            width: 90%;
+            max-width: 450px;
+            position: absolute;
+            padding: 50px 60px 70px;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
             /* color: transparent; */
         }
     </style>
@@ -36,7 +44,7 @@
                 <div class="px-6 sm:px-4 xl:px-0 md:max-w-screen w-full flex flex-col items-center mb-16 mt-4 sm:mt-10">
                     <div
                         class="sm:border sm:border-gray2 sm:rounded-lg sm:p-8 sm:pb-15 relative w-full flex flex-col items-center d1jywajc"  style="background-color: #fff;">
-                        <section class="w-full sbdsy28 flex flex-col items-center" data-event-category="Member Login">
+                        <section class="w-full sbdsy28 flex flex-col items-center justify-center" data-event-category="Member Login">
                             <form id="login-form" method="post" class="w-full">
                                 {% csrf_token %}
                                 <div class="flex flex-col mb-1 md:mb-8 items-center">
