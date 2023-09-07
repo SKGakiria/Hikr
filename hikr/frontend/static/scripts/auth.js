@@ -35,35 +35,18 @@ $(document).ready(function () {
   // User login
   $('#login-form').submit(function (event) {
     event.preventDefault()
-    if (sessionStorage.getItem('authToken') !== null) {
-      window.location.href = '/';
-    }
-    event.preventDefault();
     const email = $('#email').val();
     const password = $('#password').val();
     login(email, password);
   });
 
   // User logout
-  $('#logout-link').on('click', function (event) {
-    event.preventDefault();
-    $.ajax({
-      url: '/logout/',
-      type: 'POST',
-      contentType: 'application/json',
-      headers: {
-        Authorization: 'Token ' + sessionStorage.getItem('authToken')
-      },
-      success: function (data) {
-        sessionStorage.removeItem('authToken');
-        showToasts(['User logged out successfully!'], 'succ-toast');
-        window.location.href = '/login/';
-        updateHeaderFooter();
-      },
-      error: function (error) {
-        console.error(error);
-      }
-    });
+  $('#logout-link').on('click', function () {
+    if (sessionStorage.getItem('authToken')) {
+      sessionStorage.removeItem('authToken');
+      showToasts(['User logged out successfully!'], 'succ-toast');
+      updateHeaderFooter();
+    }
   });
 });
 
@@ -81,13 +64,33 @@ function login (email, password) {
       // Store the authentication token securely
       sessionStorage.setItem('authToken', response.token);
       showToasts(['User logged in successfully!'], 'succ-toast');
-      window.location.href = '/';
+     // Check if there is a 'next' parameter in the URL
+     const queryParams = new URLSearchParams(window.location.search);
+     const nextUrl = queryParams.get('next');
+     
+     // Redirect to the 'next' URL if it exists, or to the home page '/'
+     if (nextUrl) {
+       window.location.href = nextUrl;
+     } else {
+       window.location.href = '/';
+     }
       updateHeaderFooter();
     },
     error: function (error) {
       showToasts(['Invalid email or password. Please try again.'], 'err-toast');
       console.error(error);
     }
+  });
+}
+
+
+function checkAuth () {
+  $.ajax({
+    url: '/check-auth/',
+    type: 'GET',
+    success: function (response) {
+      return response.authenticated;
+    },
   });
 }
 

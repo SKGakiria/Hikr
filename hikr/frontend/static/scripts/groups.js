@@ -11,11 +11,10 @@ async function fetchGroupsData (groupsUrl) {
     const groupsMembersCount = await memberCount(group.id);
     const groupTile = `
       <div class="w-full">
-        <div data-testid="group-card"
-            class="py-3 border-t border-gray3 bg-white cursor-pointer flex flex-col"><a
+        <div class="py-3 border-t border-gray3 bg-white cursor-pointer flex flex-col"><a
                 class="flex hover:no-underline" href="/groups/${group.id}/">
-                <div class="d1xev8qx mr-4 relative sm:block">
-                  <img alt="${group.name}" loading="lazy" width="178" height="100" class="object-cover object-center rounded-md max-h-[178px]" style="color: transparent;" src="${group.image}"/>
+                <div class="mr-4 relative sm:block">
+                  <img alt="${group.name}" loading="lazy" width="178" height="100" class="object-cover object-center rounded-md max-h-[178px]" style="color: transparent;" src="${group.image}" target=""/>
                 </div>
                 <div class="flex flex-col overflow-hidden w-full">
                     <div class="flex pb-4 justify-between">

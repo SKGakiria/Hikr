@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from events.models import Event
+from django.contrib.auth.decorators import login_required
+from events.models import Event, EventAttendance
 from groups.models import Group, GroupMembership
 
 
@@ -39,6 +40,33 @@ def group(request, group_id):
     except Group.DoesNotExist:
         return redirect('groups')
 
+
+@login_required
+def join_group(request, group_id):
+    """
+    Join a group.
+    """
+    if request.method == 'POST':
+        group = Group.objects.get(pk=group_id)
+        GroupMembership.objects.create(group=group, user=request.user)
+        return redirect('group-detail', group_id=group_id)
+    
+    return redirect('group-detail', group_id=group_id)
+
+
+@login_required
+def leave_group(request, group_id):
+    """
+    Leave a group.
+    """
+    if request.method == 'POST':
+        group = Group.objects.get(pk=group_id)
+        GroupMembership.objects.filter(group=group, user=request.user).delete()
+        return redirect('group-detail', group_id=group_id)
+
+    return redirect('group-detail', group_id=group_id)
+
+
 def event(request, event_id):
     """
     Render event detail page with data direct from the databse.
@@ -46,9 +74,38 @@ def event(request, event_id):
     """
     try:
         event = Event.objects.get(pk=event_id)
-        return render(request, 'event.html', {'event': event})
+        attendance = False
+        if request.user.is_authenticated:
+            attendance = EventAttendance.objects.filter(event_id=event_id, user=request.user).exists()
+        return render(request, 'event.html', {'event': event, 'attendance': attendance})
     except Event.DoesNotExist:
         return redirect('events')
+
+
+@login_required
+def join_event(request, event_id):
+    """
+    Attend an event.
+    """
+    if request.method == 'POST':
+        event = Event.objects.get(pk=event_id)
+        EventAttendance.objects.create(event=event, user=request.user)
+        return redirect('event-detail', event_id=event_id)
+    
+    return redirect('event-detail', event_id=event_id)
+
+
+@login_required
+def leave_event(request, event_id):
+    """
+    Unattend an event.
+    """
+    if request.method == 'POST':
+        event = Event.objects.get(pk=event_id)
+        EventAttendance.objects.filter(event=event, user=request.user).delete()
+        return redirect('event-detail', event_id=event_id)
+
+    return redirect('event-detail', event_id=event_id)
 
 
 def sign_up(request):

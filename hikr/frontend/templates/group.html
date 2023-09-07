@@ -14,7 +14,6 @@
     <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
     <script src="{% static 'scripts/common.js' %}"></script>
     <script src="{% static 'scripts/auth.js' %}"></script>
-    <script src="{% static 'scripts/group.js' %}"></script>
 </head>
 
 <body class="font-body">
@@ -28,14 +27,13 @@
                 <section
                     class="flex flex-col md:flex-row items-stretch justify-center lg:justify-between space-y-4 md:space-y-0 mx-auto mb-5 mt-0 pt-5 max-w-[1100px] md:px-5">
                     <div class="md:max-w-[600px] relative w-full md:w-3/5 md:pr-6"><img alt="" fetchpriority="high"
-                            loading="eager" width="600" height="100" decoding="async" data-nimg="1"
-                            class="md:rounded-lg object-cover object-center aspect-video w-full"
+                            loading="eager" width="600" height="100" decoding="async" class="md:rounded-lg object-cover object-center aspect-video w-full"
                             style="color:transparent" src="{{ group.image.url }}" />
                     </div>
                     <div class="flex flex-col justify-between space-y-2 w-full md:w-2/5 px-4 md:px-0">
                         <div><a id="group-name-link" href="#top" data-event-label="group-name-link"
                                 class="hover:no-underline" data-event-category="GroupHome">
-                                <h1 class="ds-font-title-1 font-extrabold">{{ group.name }}</h1>
+                                <h1 class="font-extrabold text-3xl">{{ group.name }}</h1>
                             </a>
                             <div class="mt-5"></div>
                             <div class="flex flex-col space-y-1">
@@ -45,7 +43,7 @@
                                     <div class="w-2 h-6">
                                         <div></div>
                                     </div>
-                                    <div class="text-sm">{{ group.location }}</div>
+                                    <div class="text-xl">{{ group.location }}</div>
                                     </a>
                                 </div>
                                 <div class="flex flex-row space-x-1.5 items-center text-sm">
@@ -53,7 +51,7 @@
                                     <div class="w-1 h-6">
                                         <div></div>
                                     </div>
-                                    <div class="flex flex-row space-x-1.5 items-center text-sm">
+                                    <div class="flex flex-row space-x-1.5 items-center text-xl">
                                         <div>{{ group.members.count }} member{{ group.members.count|pluralize}}</div>
                                         </a>
                                     </div>
@@ -64,8 +62,7 @@
                                         <div></div>
                                     </div>
                                     <a id="organizer-name-link" data-event-label="organizer-name-link"
-                                        class="text-sm hover:no-underline" href="#"
-                                        data-event-category="GroupHome"><span>Organized by <b class="font-semibold">
+                                        class="text-xl hover:no-underline"><span>Organized by <b class="font-semibold">
                                                 {{ group.owner.first_name }} {{ group.owner.last_name }}</b></span>
                                     </a>
                                 </div>
@@ -87,14 +84,20 @@
                     {% if request.user.is_authenticated and membership %}
                     <div
                     class="flex-row space-x-3 md:flex whitespace-nowrap w-full md:w-2/5 px-4 md:px-0 min-h-[40px]">
-                    <button id="leave-group-button" data-group-id="{{ group.id }}" class="w-full sm:w-auto whitespace-nowrap text-center relative leave-button">Leave
-                    this group</button>{{ request.user.username }}
+                    <form method="post" action="{% url 'leave-group' group.id %}">
+                        {% csrf_token %}
+                        <button class="w-full sm:w-auto whitespace-nowrap text-center relative leave-button">Leave
+                        this group</button>
+                    </form>
                 </div>
                     {% else %}
                     <div
                         class="flex-row space-x-3 md:flex whitespace-nowrap w-full md:w-2/5 px-4 md:px-0 min-h-[40px]">
-                        <button id="join-group-button" data-group-id="{{ group.id }}" class="w-full sm:w-auto whitespace-nowrap text-center relative p14rljdx">Join
-                            this group</button>
+                        <form method="post" action="{% url 'join-group' group.id %}">
+                            {% csrf_token %}
+                            <button class="w-full sm:w-auto whitespace-nowrap text-center relative p14rljdx">Join
+                                this group</button>
+                        </form>
                     </div>
                     {% endif %}
                 </div>

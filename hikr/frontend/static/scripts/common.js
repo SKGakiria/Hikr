@@ -36,7 +36,7 @@ $(document).ready(function () {
             <div class="flex flex-row space-x-5 items-center">
               <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/events/">Events</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/groups/">Groups</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" class="login-link" href="/login/">Sign in <i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></a><a></a><a></a>
-                <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" id="logout-link" href="/logout/"><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i> Log out</a><a></a><a></a>
+                <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" id="logout-link" href="/accounts/logout/"><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i> Log out</a><a></a><a></a>
             </div>
           </div>
         </div>
