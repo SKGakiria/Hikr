@@ -14,11 +14,10 @@ async function fetchEventsData (eventsUrl) {
         <div>
         <div data-recommendationid=""
             data-recommendationsource="ml-popular-events-nearby"
-            data-eventref="${event.id}" data-element-name="eventCard"
-            data-testid="eventCard"
+            data-eventref="${event.id}"
             class="p-0 bg-clip-padding bg-cover bg-transparent relative h-full flex bg-white z-0 break-words transition-shadow duration-300 w-full flex-row justify-start py-4 border-t border-gray3 md:pt-4 md:pb-5">
             <a class="w-full inline cursor-pointer relative hover:no-underline"
-                href="/events/${event.id}" data-event-label="Event card">
+                href="/events/${event.id}">
                 <div class="flex w-full flex-col">
                     <div
                         class="flex flex-row-reverse md:flex-row flex-1 overflow-hidden">
@@ -30,7 +29,7 @@ async function fetchEventsData (eventsUrl) {
                                     decoding="async" data-nimg="1"
                                     class="rounded-t-lg rounded-lg w-full absolute top-0 left-0 object-contain object-center"
                                     style="color:transparent"
-                                    src="${event.image}" />
+                                    src="${event.image}"/>
                             </div>
                         </div>
                         <div class="overflow-hidden w-full">
@@ -46,13 +45,13 @@ async function fetchEventsData (eventsUrl) {
                                 ${event.name}
                             </h2>
                             <div class="w-full  text-sm  mx-auto mb-2 md:mb-4">
-                                <p class="hidden md:line-clamp-1 text-gray6">
+                                <p class="md:line-clamp-1 text-gray6">
                                 <i class="fa-regular fa-user" style="color: #c0bfbc;"></i>&nbsp;&nbsp;${eventOwner}
                                 </p>
                                 <br>
-                                <p class="hidden md:line-clamp-1"><i class="fa-solid fa-location-dot" style="color: #c0bfbc;"></i>&nbsp;&nbsp;${event.location}</p>
+                                <p class="md:line-clamp-1"><i class="fa-solid fa-location-dot" style="color: #c0bfbc;"></i>&nbsp;&nbsp;${event.location}</p>
                             </div>
-                            <div class="h-0 sm:h-8 hidden sm:block xmedia">
+                            <div class="h-0 sm:h-8 sm:block xmedia">
                             <div class="text-gray6 text-sm"><div aria-label="${eventParticipantsCount} Going" class="text-gray6 text-sm">${eventParticipantsCount} Going</div></div>
                             </div>
                         </div>
