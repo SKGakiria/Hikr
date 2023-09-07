@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% load static %}
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" sizes="any" />
+  <link rel="preload" href="{% static 'styles/main.css' %}" as="style" onload="this.rel='stylesheet'" />
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+  <title> Hikr | Explore nature together!</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/89be0f6329.js" crossorigin="anonymous"></script>
+  <script src="{% static 'scripts/common.js' %}"></script>
+  <script src="{% static 'scripts/home.js' %}"></script>
+  <script src="{% static 'scripts/auth.js' %}"></script>
+  <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    .animate-fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+    .custom-responsive-text {
+    white-space: normal;
+  }
+    .text-justify {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+  </style>
+
+</head>
+
+<body class="font-body">
+  <!-- Start of header -->
+  <header class="z-50 top-0 bg-white mb-10 xs:mb-0">
+  </header>
+  <!-- End of header -->
+  <div id="succ-toast" class="toast hidden success-toast"></div>
+  <div class="flex flex-col flex-grow z-10">
+    <main id="main" class="flex flex-col items-center flex-grow relative overflow-hidden pb-12 smd:pb-16 text-gray7">
+      <div class="relative w-full h-[375px] smd:h-[297px] gl:h-[572px] mb-10 md:mb-12 overflow-hidden">
+        <div class="absolute top-0 right-0 bottom-0 left-0">
+          <div>
+            <img alt="background image" loading="lazy" width="90" height="90" decoding="async" data-nimg="1"
+              class="rounded-t-lg rounded-lg w-full h-full absolute top-0 left-0 object-cover object-center group-hover:opacity-80"
+              style="color:transparent" src="{% static 'images/bg-image.jpg' %}" />
+
+          </div>
+        </div>
+        <div class="absolute w-full h-full vtszv7g"></div>
+        <div
+          class="relative h-full smd:max-w-[580px] gl:max-w-[880px] xl:max-w-[1192px] mx-auto grid px-4 smd:px-0 content-center">
+          <div class="w-full gl:max-w-[500px]">
+            <h1
+              class="ds-font-title-2 text-center sm:text-left gl:font-bold gl:text-[42px] gl:leading-[3.25rem] text-white">
+              Explore nature together!</h1><a
+              class="p14rljdx inline-block w-full sm:w-[180px] mt-6 sm:mt-7 sm:text-xl font-medium sm:font-semibold text-center hover:no-underline"
+              data-event-label="Sign up variant--Body" href="/sign-up/">Join Hikr</a>
+          </div>
+        </div>
+      </div>
+      <div class="w-full smd:w-auto">
+        <div style="margin-bottom: 5%;"></div>
+        <div class="mb-14 smd:mb-8">
+          <div class="px-4 smd:px-0 mb-2 smd:mb-6 smd:w-[580px] gl:w-[888px] xl:w-[1196px]">
+            <div class="bg-beach/[.08] rounded-lg hover:no-underline hover:bg-beach/[.12] text-justify" style="padding-bottom: 10%;">
+                <div class="rounded-lg p-8 sm:p-12 relative z-10">
+                  <h2 class="text-4xl sm:text-5x mb-8 text-viridian font-bold animate-fade-in">Explore Nature Together with
+                    Hikr</h2>
+                    <div class="mb-4 text-gray6 text-lg">Exploring nature is great, but it is better and more fun when done together. Hikr is here to connect
+                      hikers to fellow hikers so that they can link up and safely explore as one hiking tribe.
+                      Hikr makes it easy to connect, socialize, and keep fit while in
+                      the safety of a community.</div>
+                  <!-- <a href="/sign-up/"
+                    class="px-8 py-3 bg-viridian text-white font-medium rounded-full hover:bg-viridian-dark transition duration-300 transform hover:scale-105">Join
+                    Hikr</a> -->
+                </div>
+                <div
+                  class="absolute top-0 left-0 w-full h-full rounded-lg pointer-events-none">
+                </div>
+            </div>
+            <div style="margin-bottom: 8%;"></div>
+            <div class="flex justify-between items-baseline">
+              <h2
+                class="flex flex-wrap items-baseline gap-x-1 gap-y-2 md:gap-x-2 ds-font-title-3 xl:text-[1.75rem] xl:leading-9 font-semibold">
+                Upcoming Hiking Events
+              </h2><a href="/events/" class="font-medium text-viridian whitespace-nowrap hidden smd:block"
+                data-event-label="eventsShelf IRL-seeAll variant">See all events</a>
+            </div>
+          </div>
+          <div class="px-0 gl:px-0 mb-2 gl:mb-10 smd:w-[580px] gl:w-[888px] xl:w-[1196px]">
+            <div class="flex flex-col smd:flex-row flex-wrap gap-2 smd:gap-9 bg-gray1 smd:bg-white"
+              id="eventsContainer">
+              <!-- Events tiles -->
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full px-4 smd:px-0 smd:max-w-[580px] gl:max-w-[880px] xl:max-w-[1192px]">
+          <div class="mb-14 xl:mb-16">
+            <h2
+              class="flex flex-wrap items-baseline gap-x-1 gap-y-2 md:gap-x-2 ds-font-title-3 xl:text-[1.75rem] xl:leading-9 font-semibold mb-6">
+              How Hikr works</h2>
+            <div class="flex flex-col gl:flex-row gap-y-6 md:gap-x-4 xl:gap-x-8"><a href="#search-form"
+                data-event-label="Search events and groups-CTA variant"
+                class="flex flex-1 p-6 md:pt-8 xl:pr-28 gap-6 bg-beach/[.08] rounded-lg hover:no-underline hover:bg-beach/[.12]">
+                <div class="min-w-[41px]">
+                  <i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #26a269;"></i>
+                </div>
+                <div>
+                  <h3 class="mb-4 text-lg leading-6 xl:text-[20px] font-semibold">Discover events and groups</h3>
+                  <p class="mb-3">See events and groups near you</p><span class="text-viridian font-medium">Search
+                    events and groups</span>
+                </div>
+              </a><a href="/" data-event-label="startAGroup-CTA variant"
+                class="flex flex-1 p-6 md:pt-8 xl:pr-28 gap-6 bg-beach/[.08] rounded-lg hover:no-underline hover:bg-beach/[.12]">
+                <div class="min-w-[41px]"><i class="fa-solid fa-plus fa-2xl" style="color: #26a269;"></i></div>
+                <div>
+                  <h3 class="mb-4 text-lg leading-6 xl:text-[20px] font-semibold">Start a group to host events
+                  </h3>
+                  <p class="mb-3">Create your own Hikr group, and draw fellow hikers</p><span
+                    class="text-viridian font-medium">Start a group</span>
+                </div>
+              </a></div>
+          </div>
+          <div>
+            <h2
+              class="flex flex-wrap items-baseline gap-x-1 gap-y-2 md:gap-x-2 ds-font-title-3 xl:text-[1.75rem] xl:leading-9 font-semibold mb-4">
+              Popular Groups</h2>
+            <p class="w-full sm:w-3/4 mb-8 md:mb-7 text-gray6">Be part of the fastest growing groups.</p>
+            <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 space-x-0 md:space-x-8" id="groupsContainer">
+              <!-- group tiles -->
+            </div>
+          </div>
+        </div>
+    </main>
+    <div class="sticky bottom-0 bg-white shadow w-full z-10 px-4 xl:px-0" style="bottom:-100px">
+      <div
+        class="smd:max-w-[580px] smd:mx-auto flex flex-col smd:items-baseline smd:flex-row smd:justify-between gl:hidden pt-3 pb-6 smd:py-6 sticky bottom-0">
+        <div class="mb-3 font-semibold text-center">Join Hikr and find your community</div>
+        <div><a class="p14rljdx w-full smd:min-w-[237px] text-center inline-block hover:no-underline font-medium"
+            data-event-label="Sign up–sticky variant" href="/sign-up/">Sign up</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- start of footer -->
+  <footer id="main_footer" class="bg-gray7 text-gray1 pt-4 z-0 mt-0">
+  </footer>
+  <!-- end of footer -->
+</body>
+
+</html>

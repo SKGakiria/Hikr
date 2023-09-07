@@ -1,6 +1,20 @@
 # Hikr
 Hikr is a web application or platform for connecting people with the shared interest of hiking.
 
+## Background Context
+1. What is Hikr?
+Exploring nature is great, but it is better and fun when done together. Having identified that there is a need to build a community of people with shared interests and safety as a concern, when it comes to outdoor activities like hiking. Developing a hiking application called Hikr came to mind. The Hikr app is here to connect hikers to fellow hikers so that they can link up and explore as one hiking tribe. Moreover, it is safer to venture outdoors together. Hence, Hikr makes it easy to connect, socialize and keep fit while in the safety of a community.
+
+2. What not to expect from the Hikr application?
+* A dating app where you find your soulmate.
+* A social media app.
+ 
+3. Target Audience
+The Hikr app will mainly be for people who are into hiking, fitness as well as nature lovers but don't want to journey alone in the outdoor experience.
+
+4. Location 
+The market we are trying to target is East Africa for now, though the scope will grow with demand in other areas.
+
 ## Installation
 
 ```sh

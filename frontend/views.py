@@ -139,3 +139,9 @@ def check_auth(request):
     Check if user is authenticated.
     """
     return JsonResponse({'is_authenticated': request.user.is_authenticated})
+
+def about(request):
+    """
+    Render about page.
+    """
+    return render(request, 'about.html')
