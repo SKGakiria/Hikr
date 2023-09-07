@@ -5,15 +5,14 @@ $(document).ready(function () {
       <div class="px-6 sm:px-4 xl:px-0 flex flex-col">
       <div class="transition-all ease-linear duration-300 d3hxo23 overflow-hidden sm:overflow-visible">
         <div class="flex flex-row items-center justify-between du3dmzv">
-          <div class="flex flex-row items-center space-x-10"><a href="/" class="lg:pl-6"><img
-                src="../static/images/logo.png" alt="Hikr logo" height="90" width="90"></a>
+          <div class="flex flex-row items-center space-x-10"><a href="/" class="lg:pl-6"><img src="../static/images/logo.png" alt="Hikr logo" height="90" width="90"/></a>
             <div class="m1t1fice gl:block xmedia">
               <form id="search-form" class="outline-none w-full">
                 <div class="flex flex-row -space-x-0.5">
                   <div class="w-full hover:z-20 de68ah0">
                     <div class="relative">
                       <div class="absolute top-2.5 left-2.5" style="width: 22px; height: 22px;">
-                      </div><input type="search" name="search" placeholder="Search events or groups"
+                      </div><input type="search" name="search" placeholder="Search events"
                         class="appearance-none border p-2 pl-4 border-gray3 outline-none hover:border-gray6 focus:border-viridian hover:z-10 focus:z-10 iofyh9x lg:min-w-[120px] xl:min-w-[300px] rounded-l-lg flex-grow w-full rounded-r-none placeholder:text-gray6" value="">
                     </div>
                   </div>
