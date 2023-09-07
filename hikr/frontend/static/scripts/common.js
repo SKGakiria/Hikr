@@ -1,7 +1,12 @@
 $(document).ready(function () {
   const header = $('header');
   const footer = $('footer');
-  header.html(`
+  const signInButtonHTML = '<a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" class="login-link" href="/accounts/login/">Sign in <i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></a>';
+  const logOutButtonHTML = '<a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" id="logout-link" href="/accounts/logout/"><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i> Log out</a>';
+
+  (async function () {
+    const isAuth = await isAuthenticated();
+    header.html(`
       <div class="px-6 sm:px-4 xl:px-0 flex flex-col">
       <div class="transition-all ease-linear duration-300 d3hxo23 overflow-hidden sm:overflow-visible">
         <div class="flex flex-row items-center justify-between du3dmzv">
@@ -33,9 +38,9 @@ $(document).ready(function () {
           <div class="block sm:hidden xmedia"></div>
           <div class="sm:ml-4 xs:block xmedia">
             <div class="flex flex-row space-x-5 items-center">
-              <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/events/">Events</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/groups/">Groups</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" class="login-link" href="/login/">Sign in <i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></a><a></a><a></a>
-                <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" id="logout-link" href="/accounts/logout/"><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i> Log out</a><a></a><a></a>
+              <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/events/">Events</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/groups/">Groups</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/about/">About</a>
+              <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+              ${isAuth ? logOutButtonHTML : signInButtonHTML}<a></a><a></a>
             </div>
           </div>
         </div>
@@ -43,7 +48,7 @@ $(document).ready(function () {
       </div>
     </div>`);
 
-  footer.html(`
+    footer.html(`
     <div class="px-6 sm:px-4 xl:px-0 md:max-w-screen my-0 mx-auto flex flex-col space-y-6 pb-4">
   <div class="flex flex-col sm:flex-row justify-between">
     <div class="w-1/3 mb-3">
@@ -92,4 +97,15 @@ $(document).ready(function () {
   </div>
 
 </div>`);
+  })();
+
+  async function isAuthenticated () {
+    try {
+      const response = await $.get('/accounts/check-auth/');
+      return response.is_authenticated;
+    } catch (error) {
+      console.error('Error:', error);
+      return false;
+    }
+  }
 });

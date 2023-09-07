@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -131,3 +132,10 @@ def logout_view(request):
     """
     logout(request)
     return redirect('login')
+
+
+def check_auth(request):
+    """
+    Check if user is authenticated.
+    """
+    return JsonResponse({'is_authenticated': request.user.is_authenticated})

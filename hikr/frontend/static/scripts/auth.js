@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   // User login
   $('#login-form').submit(function (event) {
-    event.preventDefault()
+    event.preventDefault();
     const email = $('#email').val();
     const password = $('#password').val();
     login(email, password);
@@ -45,7 +45,6 @@ $(document).ready(function () {
     if (sessionStorage.getItem('authToken')) {
       sessionStorage.removeItem('authToken');
       showToasts(['User logged out successfully!'], 'succ-toast');
-      updateHeaderFooter();
     }
   });
 });
@@ -64,49 +63,22 @@ function login (email, password) {
       // Store the authentication token securely
       sessionStorage.setItem('authToken', response.token);
       showToasts(['User logged in successfully!'], 'succ-toast');
-     // Check if there is a 'next' parameter in the URL
-     const queryParams = new URLSearchParams(window.location.search);
-     const nextUrl = queryParams.get('next');
-     
-     // Redirect to the 'next' URL if it exists, or to the home page '/'
-     if (nextUrl) {
-       window.location.href = nextUrl;
-     } else {
-       window.location.href = '/';
-     }
-      updateHeaderFooter();
+      // Check if there is a 'next' parameter in the URL
+      const queryParams = new URLSearchParams(window.location.search);
+      const nextUrl = queryParams.get('next');
+
+      // Redirect to the 'next' URL if it exists, or to the home page '/'
+      if (nextUrl) {
+        window.location.href = nextUrl;
+      } else {
+        window.location.href = '/';
+      }
     },
     error: function (error) {
       showToasts(['Invalid email or password. Please try again.'], 'err-toast');
       console.error(error);
     }
   });
-}
-
-
-function checkAuth () {
-  $.ajax({
-    url: '/check-auth/',
-    type: 'GET',
-    success: function (response) {
-      return response.authenticated;
-    },
-  });
-}
-
-function updateHeaderFooter () {
-  const authToken = sessionStorage.getItem('authToken');
-  if (authToken) {
-    // User is logged in
-    $('#login-link').hide();
-    $('#signup-link').hide();
-    $('#logout-link').show();
-  } else {
-    // User is logged out
-    $('#login-link').show();
-    $('#signup-link').show();
-    $('#logout-link').hide();
-  }
 }
 
 // Function to show multiple messages
