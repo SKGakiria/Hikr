@@ -10667,17 +10667,6 @@ video {
   margin-right: 6px;
 }
 
-@media (min-width: 577px) {
-  .dccy499:before {
-    content: "\b7";
-    color: #707070;
-    display: inline;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-top: 2px;
-  }
-}
-
 .h1lk27w4 {
   overflow-wrap: anywhere;
 }
@@ -10693,20 +10682,6 @@ video {
 .d1v7zmlk {
   width: 84px;
   flex-shrink: 0;
-}
-
-.e6v85t4 {
-  font-size: 1rem;
-  line-height: 24px;
-  font-weight: 600;
-}
-
-@media (min-width: 769px) {
-  .e6v85t4 {
-    font-size: 0.875rem;
-    line-height: 20px;
-    font-weight: 500;
-  }
 }
 
 .e1q889kb {
@@ -10726,13 +10701,6 @@ video {
 .c1u48s3d {
   height: 350px;
   width: 265px;
-}
-
-@media (min-width: 769px) {
-  .m14px31h {
-    background: #fff !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
-  }
 }
 
 .txmv3m7 {
@@ -10923,32 +10891,6 @@ video {
   overflow-wrap: anywhere;
 }
 
-@media (min-width: 577px) {
-  .dccy499:before {
-    content: "\b7";
-    color: #707070;
-    display: inline;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-top: 2px;
-  }
-}
-
-@media (min-width: 769px) {
-  .e6v85t4 {
-    font-size: 0.875rem;
-    line-height: 20px;
-    font-weight: 500;
-  }
-}
-
-@media (min-width: 769px) {
-  .m14px31h {
-    background: #fff !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
-  }
-}
-
 .e3uszjm {
   background-color: #fff !important;
 }
@@ -10966,75 +10908,4 @@ video {
     rgba(0, 0, 0, 0.5) 35.27%,
     rgba(52, 52, 52, 0.3) 60.21%
   );
-}
-
-.t5x8bgl {
-  left: 56%;
-  top: 10%;
-}
-
-@media (min-width: 577px) {
-  .t5x8bgl {
-    left: 2%;
-    top: 15%;
-  }
-}
-
-.t1d2hzl {
-  top: 2%;
-}
-
-@media (min-width: 577px) {
-  .t1d2hzl {
-    max-width: 75%;
-    left: 50%;
-    top: 5%;
-    transform: translateX(-50%);
-  }
-}
-
-.tiojsz7 {
-  top: -4%;
-}
-
-@media (min-width: 577px) {
-  .tiojsz7 {
-    top: 0;
-    right: 0;
-    left: unset;
-    transform: unset;
-  }
-}
-
-/* CSS for the toast message */
-.toast {
-  transform: translateX(-50%);
-  color: black;
-  /* Change text color to white for better visibility */
-  padding: 15px;
-  border-radius: 5px;
-  z-index: 10;
-  transition: opacity 0.5s;
-  width: 80%;
-  /* Adjust width as needed */
-  max-width: 400px;
-  /* Limit maximum width */
-}
-
-/* CSS for hiding the toast */
-.hidden {
-  opacity: 0;
-  display: none;
-}
-
-/* CSS for the success toast message */
-.success-toast {
-  background-color: #4caf50;
-  /* Green background color for success */
-}
-
-/* CSS for the error toast message */
-.error-toast {
-  background-color: #f44336;
-  /* Red background color for error */
 }

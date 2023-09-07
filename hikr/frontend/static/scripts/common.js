@@ -17,15 +17,15 @@ $(document).ready(function () {
                   <div class="w-full hover:z-20 de68ah0">
                     <div class="relative">
                       <div class="absolute top-2.5 left-2.5" style="width: 22px; height: 22px;">
-                      </div><input type="search" name="search" placeholder="Search events"
-                        class="appearance-none border p-2 pl-4 border-gray3 outline-none hover:border-gray6 focus:border-viridian hover:z-10 focus:z-10 iofyh9x lg:min-w-[120px] xl:min-w-[300px] rounded-l-lg flex-grow w-full rounded-r-none placeholder:text-gray6" value="">
+                      </div><input id="search-input" type="search" name="search" placeholder="Search events"
+                        class="appearance-none border p-2 pl-4 border-gray3 outline-none hover:border-gray6 focus:border-viridian hover:z-10 focus:z-10 iofyh9x lg:min-w-[120px] xl:min-w-[300px] rounded-l-lg flex-grow w-full rounded-r-none placeholder:text-gray6">
                     </div>
                   </div>
                   <div class="transition-all ease-out duration-200 opacity-1 flex-[1_0_50%]">
                     <div class="flex flex-row -space-x-0.5">
-                      <button id="location-search-submit" class="relative rounded-r-lg p-2 flex flex-col items-center justify-center bqsnhz9" style="background-color: #26a269;"
+                      <button id="search-submit" class="relative rounded-r-lg p-2 flex flex-col items-center justify-center bqsnhz9" style="background-color: #26a269;"
                         aria-label="Search events" data-event-label="Search submit" type="submit">
-                        <div id="search-button" style="width: 20px; height: 20px;">
+                        <div style="width: 20px; height: 20px;">
                           <i class="fa-solid fa-magnifying-glass" style="color: whitesmoke;"></i>
                         </div>
                       </button>

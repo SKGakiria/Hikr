@@ -27,7 +27,7 @@ $(document).ready(function () {
         // Extract and display all error messages from the response
         const errorResponse = JSON.parse(error.responseText);
         const errorMessages = Object.values(errorResponse);
-        showToasts(errorMessages, 'err-toast');
+        alert(errorMessages)
       }
     });
   });
@@ -44,7 +44,7 @@ $(document).ready(function () {
   $('#logout-link').on('click', function () {
     if (sessionStorage.getItem('authToken')) {
       sessionStorage.removeItem('authToken');
-      showToasts(['User logged out successfully!'], 'succ-toast');
+      alert('User logged out successfully!')
     }
   });
 });
@@ -62,7 +62,6 @@ function login (email, password) {
     success: function (response) {
       // Store the authentication token securely
       sessionStorage.setItem('authToken', response.token);
-      showToasts(['User logged in successfully!'], 'succ-toast');
       // Check if there is a 'next' parameter in the URL
       const queryParams = new URLSearchParams(window.location.search);
       const nextUrl = queryParams.get('next');
@@ -75,26 +74,8 @@ function login (email, password) {
       }
     },
     error: function (error) {
-      showToasts(['Invalid email or password. Please try again.'], 'err-toast');
+      alert('Invalid email or password. Please try again.');
       console.error(error);
     }
   });
-}
-
-// Function to show multiple messages
-function showToasts (messages, toastType) {
-  const toast = document.getElementById(toastType);
-  toast.innerHTML = ''; // Clear existing messages
-  messages.forEach(function (message) {
-    const messagePara = document.createElement('p');
-    messagePara.innerText = message;
-    toast.appendChild(messagePara);
-  });
-  toast.style.display = 'block';
-  setTimeout(function () {
-    toast.style.opacity = '0';
-    setTimeout(function () {
-      toast.style.display = 'none';
-    }, 500);
-  }, 5000); // Show for 5 seconds
 }
