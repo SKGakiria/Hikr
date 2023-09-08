@@ -1,8 +1,14 @@
 $(document).ready(function () {
   const header = $('header');
   const footer = $('footer');
-  const signInButtonHTML = '<a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" class="login-link" href="/accounts/login/">Sign in <i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></a>';
-  const logOutButtonHTML = '<a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" id="logout-link" href="/accounts/logout/"><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i> Log out</a>';
+  const signInButtonHTML = `<a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" class="login-link" href="/accounts/login/">Sign in <i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></a>`;
+  const logOutButtonHTML = `<a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian s2x9qzh whitespace-nowrap justify-center" id="logout-link" href="/accounts/logout/"><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i> Log out</a>`;
+  const loggedInFooterHTML = `<li class="my-1"><a href="/accounts/logout/" class="ds-font-small hover:no-underline text-gray4 hover:text-white cursor-pointer">Log out</a>
+  </li>`;
+  const loggedOutFooterHtml = `<li class="my-1"><a href="/sign-up/" class="ds-font-small hover:no-underline text-gray4 hover:text-white cursor-pointer">Sign up</a>
+  </li>
+  <li class="my-1"><a href="/accounts/login/" class="ds-font-small hover:no-underline text-gray4 hover:text-white cursor-pointer">Log in</a>
+  </li>`;
 
   (async function () {
     const isAuth = await isAuthenticated();
@@ -38,7 +44,7 @@ $(document).ready(function () {
           <div class="block sm:hidden xmedia"></div>
           <div class="sm:ml-4 xs:block xmedia">
             <div class="flex flex-row space-x-5 items-center">
-              <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/events/">Events</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/groups/">Groups</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/about/">About</a>
+              <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/events/">Events</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/groups/">Groups</a><a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian" href="/about/#about-section">About</a>
               <a class="ds-font-small-medium hover:no-underline text-gray7 hover:text-viridian">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
               ${isAuth ? logOutButtonHTML : signInButtonHTML}<a></a><a></a>
             </div>
@@ -54,10 +60,7 @@ $(document).ready(function () {
     <div class="w-1/3 mb-3">
       <h2>Your Account</h2>
       <ul>
-        <li class="my-1"><a href="/sign-up/" class="ds-font-small hover:no-underline text-gray4 hover:text-white cursor-pointer">Sign up</a>
-        </li>
-        <li class="my-1"><a href="/login/" class="ds-font-small hover:no-underline text-gray4 hover:text-white cursor-pointer">Log in</a>
-        </li>
+        ${isAuth ? loggedInFooterHTML : loggedOutFooterHtml}
       </ul>
     </div>
     <div class="w-1/3 mb-3">
@@ -75,7 +78,7 @@ $(document).ready(function () {
     <div class="w-1/3 mb-3">
       <h2>Hikr</h2>
       <ul>
-        <li class="my-1"><a href="/" data-element-name="footer-about" data-event-label="About"
+        <li class="my-1"><a href="/about/#about-section" data-element-name="footer-about" data-event-label="About"
             class="ds-font-small hover:no-underline text-gray4 hover:text-white cursor-pointer">About</a></li>
         <li class="my-1"><a href="/" data-element-name="footer-blog" data-event-label="Blog"
             class="ds-font-small hover:no-underline text-gray4 hover:text-white cursor-pointer">Blog</a></li>
