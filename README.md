@@ -15,6 +15,8 @@ The Hikr app will mainly be for people who are into hiking, fitness as well as n
 4. Location 
 The market we are trying to target is East Africa for now, though the scope will grow with demand in other areas.
 
+[Site is hosted at](hikr.odocodes.tech)
+
 ## Installation
 
 ```sh
