@@ -1,5 +1,5 @@
 # Hikr
-Hikr is a web application or platform for connecting people with the shared interest of hiking.
+[Hikr](hikr.odocodes.tech) is a web application or platform for connecting people with the shared interest of hiking.
 
 ## Background Context
 1. What is Hikr?
@@ -15,7 +15,7 @@ The Hikr app will mainly be for people who are into hiking, fitness as well as n
 4. Location 
 The market we are trying to target is East Africa for now, though the scope will grow with demand in other areas.
 
-[Site is hosted at](hikr.odocodes.tech)
+Checkout the live site [here](hikr.odocodes.tech)
 
 ## Installation
 
