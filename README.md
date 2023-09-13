@@ -64,3 +64,9 @@ or
 ```sh
 $ python3 populate_db.py
 ```
+## Authors
+[Evance Odoyo](https://github.com/evanceodoyo)
+[Stacy Gakiria](https://github.com/SKGakiria)
+
+## License
+MIT License.
