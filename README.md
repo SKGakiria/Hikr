@@ -64,9 +64,14 @@ or
 ```sh
 $ python3 populate_db.py
 ```
+
+## Blog Posts
+[Evance Odoyo's](https://odoyoevance.medium.com/hikr-place-to-connect-and-explore-nature-together-4328b974644a) Blog
+[Stacy Gakiria's](https://medium.com/@swgakiria/hikr-the-application-where-interests-build-a-community-and-develop-friendships-fe8f356efcc2) Blog
+
 ## Authors
 [Evance Odoyo](https://github.com/evanceodoyo)
 [Stacy Gakiria](https://github.com/SKGakiria)
 
 ## License
-MIT License.
+[MIT](https://opensource.org/license/mit/) License.
