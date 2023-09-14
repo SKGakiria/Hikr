@@ -1,4 +1,5 @@
-# Hikr
+# Hikr ~ _Explore nature together!_
+![Hikr logo](./frontend/static/images/logo.png)
 [Hikr](hikr.odocodes.tech) is a web application or platform for connecting people with the shared interest of hiking.
 
 ## Background Context
@@ -13,9 +14,15 @@ Exploring nature is great, but it is better and fun when done together. Having i
 The Hikr app will mainly be for people who are into hiking, fitness as well as nature lovers but don't want to journey alone in the outdoor experience.
 
 4. Location 
-The market we are trying to target is East Africa for now, though the scope will grow with demand in other areas.
+Hikr is relevant to East Africa for now. 
 
-Checkout the live site [here](hikr.odocodes.tech)
+Checkout the live site [here](hikr.odocodes.tech).
+
+## Tour of Hikr
+Here is a preview our depoyed version of Hikr.
+![Hikr page](./frontend/static/images/hikr_page.png)
+Below is a preview of Hikr features.
+![Hikr features](./frontend/static/images/features.png)
 
 ## Installation
 
